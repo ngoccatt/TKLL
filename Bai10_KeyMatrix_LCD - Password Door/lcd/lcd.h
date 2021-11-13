@@ -82,5 +82,6 @@ void DisplayLcdScreen2();
 void DisplayLcdScreenOld();
 void LcdPrintNumS(unsigned char x, unsigned char y, long num);
 void LcdPrintStringS(unsigned char x, unsigned char y, const rom  unsigned char* string);
+void LcdPrintLineS(unsigned char x, const rom unsigned char *string);
 
 #endif 

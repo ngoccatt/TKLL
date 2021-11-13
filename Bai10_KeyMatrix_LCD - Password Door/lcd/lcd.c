@@ -424,3 +424,16 @@ void LcdPrintStringS(unsigned char x, unsigned char y, const rom unsigned char *
     lcd_print_charS (*string++);}
 }
 
+void LcdPrintLineS(unsigned char x, const rom unsigned char *string) {
+    int i = 0;              //bien phai duoc khai bao o dau ham, khong duoc dua vao giua
+    current_row = x%2;
+    current_col = 0;
+    for(i = 0; i < 16; i++) {
+        if (*string) {
+            lcd_print_charS(*string++);
+        } else {
+            lcd_print_charS(' ');
+        }
+    }
+}
+
