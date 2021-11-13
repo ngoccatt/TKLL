@@ -153,7 +153,7 @@ void init_system(void)
         LcdClearS();
 //        LED = 0x00;
         init_interrupt();
-        delay_ms(2000);
+        delay_ms(1000);
         init_timer0(4695);//dinh thoi 1ms sai so 1%
         init_timer1(9390);//dinh thoi 2ms
         init_timer3(46950);//dinh thoi 10ms
