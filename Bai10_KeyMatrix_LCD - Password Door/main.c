@@ -27,6 +27,9 @@
 #define     REMOVE_COMPLETE         18
 #define     CHANGE_MEMBER_PASSWORD  19
 #define     APPLY_MEM_NEW_PASS      20
+#define     USER_DASHBOARD          21
+#define     USER_CHANGE_PASS        22
+
 // Noi khai bao bien toan cuc
 unsigned char arrayMapOfOutput [8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
 unsigned char statusOutput[8] = {0,0,0,0,0,0,0,0};
@@ -99,6 +102,9 @@ unsigned char ad_num_member_list = 0;
 unsigned char ad_cur_mem_list = 0;
 unsigned char ad_current_member = 0;
 
+//Variable use for user section:
+
+unsigned char user_page[2] = {UNLOCK_DOOR, USER_CHANGE_PASS};
 
 
 void App_PasswordDoor();
@@ -310,11 +316,63 @@ void App_PasswordDoor()
             if (CheckPassword()) 
                 if (current_user == 0) {
                     statusPassword = ADMIN_DASHBOARD;
-                } else {        //user here!
-                    statusPassword = UNLOCK_DOOR;
+                } else {       
+                    statusPassword = USER_DASHBOARD;
                 }
             else
                 statusPassword = WRONG_PASSWORD;
+            break;
+        case USER_DASHBOARD:
+            timeDelay++;
+            LcdPrintLineS(0, "1.OPEN DOOR");
+            LcdPrintLineS(1, "2.CHANGE PASS");
+            
+            if (isButtonBack()){
+                statusPassword = INIT_SYSTEM;
+            }
+            if (key_code[0] == 1) {
+                statusPassword = user_page[0];
+                reset_package();
+            }
+            if (key_code[1] == 1) {
+                statusPassword = user_page[1];
+                reset_package();
+            }
+            if (timeDelay > 200) {      
+                statusPassword = INIT_SYSTEM;
+            }
+            break;
+        case USER_CHANGE_PASS:
+            timeDelay++;
+            LcdPrintLineS(0, "CHANGE USER PASS");
+            if (isButtonNumber())
+            {
+                if (numberValue == 'A') {
+                   if (indexOfNumber > 0) {
+                       indexOfNumber--;
+                       LcdPrintStringS(1,indexOfNumber," ");
+                   }
+                }
+                else if (numberValue < 10){
+                    if (indexOfNumber < PASSWORD_LENGTH) {
+                        LcdPrintStringS(1,indexOfNumber,"*");
+                        arrayPassword [indexOfNumber] = numberValue;
+                        indexOfNumber++;
+                    }
+                }
+                timeDelay = 0;
+            }
+            if (isButtonEnter() && indexOfNumber >= PASSWORD_LENGTH) {
+                statusPassword = APPLY_NEW_PASS;
+                reset_package();
+            }
+            if (isButtonBack()) {
+                statusPassword = USER_DASHBOARD;
+                reset_package();
+            }
+            if (timeDelay > 200) {
+                statusPassword = INIT_SYSTEM;
+            }
             break;
         case ADMIN_DASHBOARD:
             timeDelay++;
@@ -381,7 +439,7 @@ void App_PasswordDoor()
                 statusPassword = INIT_SYSTEM;
             }
             break;
-        case APPLY_NEW_PASS:        //ong co the dung state nay de cap nhat lai mat khau cho user luon cung duoc.
+        case APPLY_NEW_PASS:        
             timeDelay++;
             LcdPrintLineS(0,"CHANGE SUCCESS");
             if (timeDelay == 1) {
