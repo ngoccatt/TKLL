@@ -67,9 +67,9 @@ typedef struct user_account {
 user_account account[MAX_ACCOUNT] = {
     {0, {1,2,3,4,5,6}},
     {1, {2,7,8,9,7,8}},
-    {12, {3,3,3,3,3,3}},
-    {37, {4,8,6,8,2,1}},
-    {41, {5,'A','B','C','D', "F"}}
+    {2, {3,3,3,3,3,3}},
+    {3, {4,8,6,8,2,1}},
+    {4, {5,'A','B','C','D', "F"}}
 };
 
 unsigned char arrayPassword[PASSWORD_LENGTH];
@@ -264,7 +264,7 @@ void App_PasswordDoor()
             if (isButtonBack()) {
                 statusPassword = INIT_SYSTEM;
             }
-            if (timeDelay >= 200) {
+            if (timeDelay >= 600) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -305,7 +305,7 @@ void App_PasswordDoor()
             }
             if (indexOfNumber >= PASSWORD_LENGTH)
                 statusPassword = CHECK_PASSWORD;
-            if (timeDelay >= 200)
+            if (timeDelay >= 600)
                 statusPassword = INIT_SYSTEM;
             if (isButtonBack())
                 statusPassword = INIT_SYSTEM;
@@ -327,6 +327,8 @@ void App_PasswordDoor()
             LcdPrintLineS(0, "1.OPEN DOOR");
             LcdPrintLineS(1, "2.CHANGE PASS");
             
+            if (isButtonPress == 1) timeDelay = 0;
+            
             if (isButtonBack()){
                 statusPassword = INIT_SYSTEM;
             }
@@ -338,7 +340,7 @@ void App_PasswordDoor()
                 statusPassword = user_page[1];
                 reset_package();
             }
-            if (timeDelay > 200) {      
+            if (timeDelay > 600) {      
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -370,7 +372,7 @@ void App_PasswordDoor()
                 statusPassword = USER_DASHBOARD;
                 reset_package();
             }
-            if (timeDelay > 200) {
+            if (timeDelay > 600) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -388,6 +390,9 @@ void App_PasswordDoor()
                 default:
                     break;
             } 
+            
+            if (isButtonPress == 1) timeDelay = 0;
+            
             if (isButtonEnter()) {
                 ad_current_page = (ad_current_page + 1) % ADMIN_NUM_OF_PAGES;
                 timeDelay = 0;
@@ -403,7 +408,7 @@ void App_PasswordDoor()
                 statusPassword = admin_page[ad_current_page][1];
                 reset_package();
             }
-            if (timeDelay > 200) {      
+            if (timeDelay > 100) {      
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -435,7 +440,7 @@ void App_PasswordDoor()
                 statusPassword = ADMIN_DASHBOARD;
                 reset_package();
             }
-            if (timeDelay > 200) {
+            if (timeDelay > 600) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -463,6 +468,7 @@ void App_PasswordDoor()
                 default:
                     break;
             } 
+            if (isButtonPress == 1) timeDelay = 0;
             if (isButtonEnter()) {
                 ad_mem_cur_page = (ad_mem_cur_page + 1) % MANAGE_NUM_OF_PAGES;
                 timeDelay = 0;
@@ -483,7 +489,7 @@ void App_PasswordDoor()
                 //cap nhat lai so trang cua member khi vao ham REMOVE_MEMBER hay CHANGE_MEMBER
                 ad_num_member_list = (((num_of_user - 1) % 4 == 0) ? ((num_of_user - 1) / 4) : ((num_of_user - 1) / 4) + 1);
             }
-            if (timeDelay > 200) {      
+            if (timeDelay > 600) {      
                 statusPassword = ADMIN_DASHBOARD;
             }
             break;
@@ -516,7 +522,7 @@ void App_PasswordDoor()
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
-            if (timeDelay > 200) {      
+            if (timeDelay > 600) {      
                 statusPassword = ADMIN_DASHBOARD;
                 reset_package();
             }
@@ -585,14 +591,15 @@ void App_PasswordDoor()
                 else if (numberValue == 4 && ((ad_cur_mem_list * 4 + 4) < num_of_user)) {
                     ad_current_member = ad_cur_mem_list * 4 + 4;
                 } else {
-                    ad_current_member = CHAR_ERROR_RETURN;
+                    ad_current_member = CHAR_ERROR_RETURN; 
                 }
                 if (ad_current_member != CHAR_ERROR_RETURN ) {
                     statusPassword = CONFIRM_REMOVE_MEMBER;
                     reset_package();
                 }
+                timeDelay = 0;
             }
-            if (timeDelay > 200) {
+            if (timeDelay > 600) {
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
@@ -604,6 +611,9 @@ void App_PasswordDoor()
             LcdPrintCharS(0, 15, '?');
             LcdPrintStringS(1,0,"N:BACK");
             LcdPrintStringS(1,8,"Y:ENTER");
+            
+            if(isButtonPress == 1) timeDelay = 0;
+            
             if (isButtonEnter()) {
                 reset_package();
                 statusPassword = REMOVE_COMPLETE;
@@ -612,7 +622,7 @@ void App_PasswordDoor()
                 reset_package();
                 statusPassword = ADMIN_REMOVE_MEMBER;
             }
-            if (timeDelay > 200) {
+            if (timeDelay > 600) {
                 reset_package();
                 statusPassword = ADMIN_MEMBER_MANAGER;
             }
@@ -682,8 +692,9 @@ void App_PasswordDoor()
                     statusPassword = CHANGE_MEMBER_PASSWORD;
                     reset_package();
                 }
+                timeDelay = 0;
             }
-            if (timeDelay > 200) {
+            if (timeDelay > 600) {
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
@@ -717,7 +728,7 @@ void App_PasswordDoor()
                 statusPassword = ADMIN_CHANGE_MEMBER;
                 reset_package();
             }        
-            if (timeDelay > 200) {
+            if (timeDelay > 600) {
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
@@ -745,7 +756,7 @@ void App_PasswordDoor()
             timeDelay++;
             LcdPrintStringS(0,0,"OPENING DOOR    ");
             UnlockDoor();
-            if (timeDelay >= 200)
+            if (timeDelay >= 600)
                 statusPassword = INIT_SYSTEM;
             break;
         case WRONG_PASSWORD:
@@ -813,7 +824,7 @@ void displayID(int x, int y, unsigned int value, unsigned char indexOfID) {
     } else if (value < 10 && indexOfID == 2) {
         LcdPrintStringS(x,y,"0");
         LcdPrintNumS(x,y+1,value);
-    } else if (value < 200 && indexOfID == 3) {
+    } else if (value < 600 && indexOfID == 3) {
         LcdPrintStringS(x,y,"0");
         LcdPrintNumS(x,y+1,value);
     } else {

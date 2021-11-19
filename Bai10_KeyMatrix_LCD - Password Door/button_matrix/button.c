@@ -5,6 +5,7 @@ unsigned int key_code[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 //unsigned char arrayMaskInputOfKey [8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
 unsigned char arrayMaskOutputOfKey [4] = {0x10,0x20,0x40,0x80};
 unsigned char arrayMaskInputOfKey [4] = {0x01,0x02,0x04,0x08};
+unsigned char isButtonPress = 0;
 
 void init_key_matrix()
 {
@@ -15,18 +16,27 @@ void init_key_matrix()
 void scan_key_matrix()
 {
 	int i,j;
+    unsigned char press = 0;
 	for(i=0;i<MAX_ROW;i++)     
 	{
 		PORT_BUTTON = ~arrayMaskOutputOfKey[i];
 		for(j=0;j<MAX_COL;j++)
 		{ 
-			if((PORT_BUTTON & arrayMaskInputOfKey[j]) == 0)  
+			if((PORT_BUTTON & arrayMaskInputOfKey[j]) == 0)  {
 				key_code[i*MAX_ROW+j] = key_code[i*MAX_ROW+j] + 1;
+                press = 1;
+            }
 			else
 				key_code[i*MAX_ROW+j] = 0;   
 		}
 	}
+    if (press == 1) {
+        isButtonPress = 1;
+    } else {
+        isButtonPress = 0;
+    }
 }
+
 
 
 //ham nay de giup cac ban hieu ro viec quet ma tran phim
