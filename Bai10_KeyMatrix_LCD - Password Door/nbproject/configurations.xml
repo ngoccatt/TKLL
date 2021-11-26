@@ -9,6 +9,9 @@
       <itemPath>timer/timer.h</itemPath>
       <itemPath>interrupt/interrupt.h</itemPath>
       <itemPath>lcd/lcd.h</itemPath>
+      <itemPath>i2c/i2c.h</itemPath>
+      <itemPath>uart/uart.h</itemPath>
+      <itemPath>adc/adc.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +25,9 @@
       <itemPath>timer/timer.c</itemPath>
       <itemPath>interrupt/interrupt.c</itemPath>
       <itemPath>lcd/lcd.c</itemPath>
+      <itemPath>adc/adc.c</itemPath>
+      <itemPath>i2c/i2c.c</itemPath>
+      <itemPath>uart/uart.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -34,6 +40,9 @@
     <Elem>timer</Elem>
     <Elem>interrupt</Elem>
     <Elem>lcd</Elem>
+    <Elem>i2c</Elem>
+    <Elem>uart</Elem>
+    <Elem>adc</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

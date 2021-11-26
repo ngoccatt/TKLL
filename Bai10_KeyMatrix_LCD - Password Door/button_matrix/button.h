@@ -13,7 +13,9 @@ extern unsigned char isButtonPress;
 
 
 void init_key_matrix();
+void init_key_matrix_with_uart();
 void scan_key_matrix();
+void scan_key_matrix_with_uart();
 void button_process();
 void button_delay_ms(int value);
 void scan_key_matrix_demo();

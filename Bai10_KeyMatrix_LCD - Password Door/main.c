@@ -6,6 +6,8 @@
 #define     ON      1
 #define     OFF     0
 
+#define     ADDRESS_FIRST_PROGRAM   0x20
+
 #define     INIT_SYSTEM        0
 #define     ENTER_PASSWORD     1
 #define     CHECK_PASSWORD     2
@@ -41,6 +43,12 @@ void CloseOutput(int index);
 void TestOutput(void);
 void ReverseOutput(int index);
 void Test_KeyMatrix();
+void createlog();
+
+void SetupTimeForRealTime();
+void SetupForFirstProgram(void);
+void DisplayTime();
+
 //Chuong trinh Password Door
 #define PASSWORD_LENGTH 6
 #define MAX_ACCOUNT     10
@@ -49,6 +57,17 @@ void Test_KeyMatrix();
 #define MAX_ID_LENGTH   3
 #define ADMIN_NUM_OF_PAGES     2
 #define MANAGE_NUM_OF_PAGES     2
+
+
+unsigned char second = 0,minute = 0,hour = 0;
+unsigned char day = 0;
+unsigned char date = 0,month = 0,year = 0;
+
+enum Check_in {HIEN_DIEN, TRE, VANG};
+unsigned int hien_dien = 0;
+unsigned int vang = 0;
+unsigned int tre = 0;
+
 unsigned char arrayMapOfNumber [16] = {1,2,3,'A',4,5,6,'B',
                                        7,8,9,'C','*',0,'E','D'};
 unsigned char arrayMapOfPassword [5][PASSWORD_LENGTH]= {
@@ -62,14 +81,14 @@ unsigned char arrayMapOfPassword [5][PASSWORD_LENGTH]= {
 typedef struct user_account {
     unsigned int ID;
     unsigned char password[PASSWORD_LENGTH];
+    enum Check_in checkin;
 } user_account;
 
 user_account account[MAX_ACCOUNT] = {
-    {0, {1,2,3,4,5,6}},
-    {1, {2,7,8,9,7,8}},
-    {2, {3,3,3,3,3,3}},
-    {3, {4,8,6,8,2,1}},
-    {4, {5,'A','B','C','D', "F"}}
+    {0, {1,2,3,4,5,6}, VANG},
+    {1, {2,7,8,9,7,8}, VANG},
+    {2, {3,3,3,3,3,3}, VANG},
+    {3, {4,8,6,8,2,1}, VANG}
 };
 
 unsigned char arrayPassword[PASSWORD_LENGTH];
@@ -82,8 +101,8 @@ unsigned char indexOfID = 0;
 unsigned char timeDelay = 0;
 
 unsigned int current_user = 0;
-unsigned int num_of_user = 5;
-unsigned int index_user = 5;
+unsigned int num_of_user = 4;
+unsigned int index_user = 4;
 
 //Variable use for admin section:
 
@@ -115,6 +134,7 @@ unsigned char isButtonEnter();
 unsigned char isButtonBack();
 void UnlockDoor();
 void LockDoor();
+void DoorClosed();
 void displayID(int x, int y, unsigned int value, unsigned char indexOfID);
 void reset_package();
 
@@ -154,7 +174,7 @@ void delay_ms(int value)
 void init_system(void)
 {
         TRISB = 0x00;		//setup PORTB is output
-        TRISD = 0x00;
+        TRISD = 0x00;       //PORTD is output, too
         init_lcd();
         LcdClearS();
 //        LED = 0x00;
@@ -167,6 +187,9 @@ void init_system(void)
         SetTimer1_ms(10);
         SetTimer3_ms(50); //Chu ky thuc hien viec xu ly input,proccess,output
         init_key_matrix();
+//        disable_uart();
+//        init_adc();
+        init_i2c();
 }
 
 void OpenOutput(int index)
@@ -226,8 +249,9 @@ void App_PasswordDoor()
     {
         case INIT_SYSTEM:
             LcdPrintStringS(0,0,"PRESS # FOR PASS");
-            LcdPrintStringS(1,0,"                ");
-            LockDoor();
+//            LcdPrintStringS(1,0,"                ");
+            DisplayTime();
+            DoorClosed();
             if (isButtonEnter())
             {
                 reset_package();
@@ -538,6 +562,7 @@ void App_PasswordDoor()
                     account[num_of_user].password[i] = arrayPassword[i];
                     LcdPrintCharS(1,10 + i, arrayPassword[i] + '0');
                 }
+                account[num_of_user].checkin = VANG;
                 index_user++;
                 num_of_user++;
             }
@@ -746,18 +771,41 @@ void App_PasswordDoor()
             break;
         case ADMIN_LOG:
             timeDelay++;
-            LcdPrintLineS(0, "CREATE LOG");
-            LcdPrintLineS(1, "NOT AVAILABLE");
-            if (timeDelay > 40) {
+            if (timeDelay == 1) {
+                createlog();
+            }
+            LcdPrintStringS(0,0 ,"LOG     ");
+            LcdPrintStringS(0,8 ,"HD     ");
+            LcdPrintNumS(0,12, hien_dien);
+            LcdPrintStringS(1,0 ,"T     ");
+            LcdPrintNumS(1,3, tre);
+            LcdPrintStringS(1,8 ,"V     ");
+            LcdPrintNumS(1,12, vang);
+            if (isButtonBack()) {
+                statusPassword = ADMIN_DASHBOARD;
+                reset_package();
+            }
+            if (timeDelay > 600) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
         case UNLOCK_DOOR:
+            
             timeDelay++;
+            if (timeDelay == 1) {
+                account[current_user].checkin = HIEN_DIEN;
+            }
             LcdPrintStringS(0,0,"OPENING DOOR    ");
-            UnlockDoor();
-            if (timeDelay >= 600)
+            if (timeDelay < 50) {
+                UnlockDoor();
+            } else {
+                LockDoor();
+            }
+            
+            if (timeDelay >= 100) {
                 statusPassword = INIT_SYSTEM;
+//                disable_uart();
+            }
             break;
         case WRONG_PASSWORD:
             timeDelay++;
@@ -809,12 +857,17 @@ unsigned char isButtonBack()
 void UnlockDoor()
 {
     OpenOutput(0);
-    //OpenOutput(4);
+    CloseOutput(1);
 }
 void LockDoor()
 {
     CloseOutput(0);
-    //CloseOutput(4);
+    OpenOutput(1);
+}
+
+void DoorClosed() {
+    CloseOutput(0);
+    CloseOutput(1);
 }
 
 void displayID(int x, int y, unsigned int value, unsigned char indexOfID) {
@@ -824,10 +877,11 @@ void displayID(int x, int y, unsigned int value, unsigned char indexOfID) {
     } else if (value < 10 && indexOfID == 2) {
         LcdPrintStringS(x,y,"0");
         LcdPrintNumS(x,y+1,value);
-    } else if (value < 600 && indexOfID == 3) {
+    } else if (value < 100 && indexOfID == 3) {
         LcdPrintStringS(x,y,"0");
         LcdPrintNumS(x,y+1,value);
     } else {
+        LcdPrintLineS(x,"");
         LcdPrintNumS(x,y,value);
     }
 }
@@ -840,4 +894,170 @@ void reset_package() {
     ad_mem_cur_page = 0;        //list of admin member management function
     indexOfNumber = 0;
     indexOfID = 0;
+}
+
+void createlog() {
+    int i = 0;
+    hien_dien = tre = vang = 0;
+    for(i = 0; i < num_of_user; i++) {
+        unsigned char state = account[i].checkin;
+        switch(state) {
+            case HIEN_DIEN:
+                hien_dien++;
+            break;
+            case TRE:
+                tre++;
+            break;
+            case VANG:
+                vang++;
+            break;    
+        }
+    }
+}
+
+void SetupForFirstProgram(void)
+{
+    if(Read_DS1307(ADDRESS_FIRST_PROGRAM) != 0x22)
+    {
+        SetupTimeForRealTime();
+        Write_DS1307(ADDRESS_FIRST_PROGRAM, 0x22);
+    }
+}
+
+void SetupTimeForRealTime()
+{
+    second = 50;
+    minute = 59;
+    hour = 23;
+    date = 31;
+    month = 12;
+    year = 14;
+    
+    write_ds1307(ADDRESS_SECOND, second);
+    write_ds1307(ADDRESS_MINUTE, minute);
+    write_ds1307(ADDRESS_HOUR, hour);
+    write_ds1307(ADDRESS_DATE, date);
+    write_ds1307(ADDRESS_MONTH, month);
+    write_ds1307(ADDRESS_YEAR, year);
+}
+
+void DisplayTime()
+{
+    second = Read_DS1307(ADDRESS_SECOND);
+    minute = Read_DS1307(ADDRESS_MINUTE);
+    hour = Read_DS1307(ADDRESS_HOUR);
+//    day = Read_DS1307(ADDRESS_DAY);
+    date = Read_DS1307(ADDRESS_DATE);
+    month = Read_DS1307(ADDRESS_MONTH);
+//    year = Read_DS1307(ADDRESS_YEAR);
+
+    //////day
+//    switch(day)
+//    {
+//        case 1:
+//            LcdPrintStringS(0,0,"SUN");
+//            break;
+//        case 2:
+//            LcdPrintStringS(0,0,"MON");
+//            break;
+//        case 3:
+//            LcdPrintStringS(0,0,"TUE");
+//            break;
+//        case 4:
+//            LcdPrintStringS(0,0,"WED");
+//            break;
+//        case 5:
+//            LcdPrintStringS(0,0,"THU");
+//            break;
+//        case 6:
+//            LcdPrintStringS(0,0,"FRI");
+//            break;
+//        case 7:
+//            LcdPrintStringS(0,0,"SAT");
+//            break;
+//    }
+    if(hour < 10)
+    {
+        LcdPrintStringS(1,0,"0");
+        LcdPrintNumS(1,1,hour);
+    }
+    else
+        LcdPrintNumS(1,0,hour);
+    
+    LcdPrintStringS(1,2,":");
+    if(minute < 10)
+    {
+        LcdPrintStringS(1,3,"0");
+        LcdPrintNumS(1,4,minute);
+    }
+    else
+        LcdPrintNumS(1,3,minute);
+
+    LcdPrintStringS(1,5,":");
+    if(second < 10)
+    {
+        LcdPrintStringS(1,6,"0");
+        LcdPrintNumS(1,7,second);
+    }
+    else
+        LcdPrintNumS(1,6,second);
+    
+//    switch(month)
+//    {
+//        case 1:
+//            LcdPrintStringS(1,8,"JAN");
+//            break;
+//        case 2:
+//            LcdPrintStringS(1,8,"FEB");
+//            break;
+//        case 3:
+//            LcdPrintStringS(1,8,"MAR");
+//            break;
+//        case 4:
+//            LcdPrintStringS(1,8,"APR");
+//            break;
+//        case 5:
+//            LcdPrintStringS(1,8,"MAY");
+//            break;
+//        case 6:
+//            LcdPrintStringS(1,8,"JUN");
+//            break;
+//        case 7:
+//            LcdPrintStringS(1,8,"JUL");
+//            break;
+//        case 8:
+//            LcdPrintStringS(1,8,"AUG");
+//            break;
+//        case 9:
+//            LcdPrintStringS(1,8,"SEP");
+//            break;
+//        case 10:
+//            LcdPrintStringS(1,8,"OCT");
+//            break;
+//        case 11:
+//            LcdPrintStringS(1,8,"NOV");
+//            break;
+//        case 12:
+//            LcdPrintStringS(1,8,"DEC");
+//            break;
+//    }
+
+//    LcdPrintStringS(1,11," ");
+    if(date < 10)
+    {
+        LcdPrintStringS(1,11," ");
+        LcdPrintNumS(1,12,date);
+    }
+    else
+        LcdPrintNumS(1,11,date);
+    LcdPrintStringS(1,13,"/");
+    if (month < 10) {
+        LcdPrintStringS(1,14," ");
+        LcdPrintNumS(1,15,month);
+    } else {
+        LcdPrintNumS(1,14,month);
+    }
+//    LcdPrintNumS(1,9,20);
+//    LcdPrintNumS(1,15,year);
+
 }

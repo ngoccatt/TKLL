@@ -55,7 +55,7 @@ void main(void)
 	{
         while (!flag_timer3);
         flag_timer3 = 0;
-        scan_key_matrix_with_uart();
+        scan_key_matrix();
         SimulateFull_COCA();
         DisplayLcdScreen();
 	}
@@ -82,7 +82,7 @@ void init_system(void)
     SetTimer0_ms(2);
     SetTimer1_ms(10);
     SetTimer3_ms(50); //Chu ky thuc hien viec xu ly input,proccess,output
-    init_key_matrix_with_uart();
+    init_key_matrix();
     init_uart();
     init_adc();
     init_i2c();
@@ -228,8 +228,9 @@ void SendTime(void)
     UartSendNum(hour/10);
     UartSendNum(hour%10);
     UartSendString(":");
-    UartSendNum(minute/10);
-    UartSendNum(minute%10);
+    UartSendNum(minute);
+//    UartSendNum(minute/10);
+//    UartSendNum(minute%10);
     UartSendString(":");
     UartSendNum(second/10);
     UartSendNum(second%10);

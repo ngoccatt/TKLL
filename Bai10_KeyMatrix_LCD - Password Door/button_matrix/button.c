@@ -13,6 +13,14 @@ void init_key_matrix()
 	PORT_BUTTON = 0xff;
 }
 
+void init_key_matrix_with_uart()
+{
+//        TRIS_BUTTON = TRIS_BUTTON | 0x07;
+        //TRIS_BUTTON = TRIS_BUTTON & 0b11001111; //RC5 & RC4 Output
+        TRIS_BUTTON = TRIS_BUTTON & 0xcf; //RC5 & RC4 Output
+        PORT_BUTTON = 0xff;
+}
+
 void scan_key_matrix()
 {
 	int i,j;
@@ -31,6 +39,31 @@ void scan_key_matrix()
 		}
 	}
     if (press == 1) {
+        isButtonPress = 1;
+    } else {
+        isButtonPress = 0;
+    }
+}
+
+void scan_key_matrix_with_uart()
+{
+	int i,j;
+    unsigned char press = 0;
+	for(i=0;i<2;i++)
+	{
+		PORT_BUTTON = PORT_BUTTON & ~arrayMaskOutputOfKey[i];
+                PORT_BUTTON = PORT_BUTTON | 0x0f;
+		for(j=0;j<MAX_COL;j++)
+		{
+			if((PORT_BUTTON & arrayMaskInputOfKey[j]) == 0) {
+				key_code[i*MAX_ROW+j] = key_code[i*MAX_ROW+j] + 1;
+                press = 1;
+            }
+			else
+				key_code[i*MAX_ROW+j] = 0;
+		}
+	}
+     if (press == 1) {
         isButtonPress = 1;
     } else {
         isButtonPress = 0;

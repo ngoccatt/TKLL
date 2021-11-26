@@ -26,8 +26,8 @@
       <itemPath>timer/timer.c</itemPath>
       <itemPath>uart/uart.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>adc/adc.c</itemPath>
       <itemPath>i2c/i2c.c</itemPath>
+      <itemPath>adc/adc.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

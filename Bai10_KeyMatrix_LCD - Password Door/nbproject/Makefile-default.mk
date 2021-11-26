@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c
+SOURCEFILES_QUOTED_IF_SPACED=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c adc/adc.c i2c/i2c.c uart/uart.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/button_matrix/button.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer/timer.o.d ${OBJECTDIR}/interrupt/interrupt.o.d ${OBJECTDIR}/lcd/lcd.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/uart/uart.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/button_matrix/button.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer/timer.o.d ${OBJECTDIR}/interrupt/interrupt.o.d ${OBJECTDIR}/lcd/lcd.o.d ${OBJECTDIR}/adc/adc.o.d ${OBJECTDIR}/i2c/i2c.o.d ${OBJECTDIR}/uart/uart.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o
+OBJECTFILES=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/uart/uart.o
 
 # Source Files
-SOURCEFILES=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c
+SOURCEFILES=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c adc/adc.c i2c/i2c.c uart/uart.c
 
 
 CFLAGS=
@@ -129,6 +129,30 @@ ${OBJECTDIR}/lcd/lcd.o: lcd/lcd.c  nbproject/Makefile-${CND_CONF}.mk
 	@${DEP_GEN} -d ${OBJECTDIR}/lcd/lcd.o 
 	@${FIXDEPS} "${OBJECTDIR}/lcd/lcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
+${OBJECTDIR}/adc/adc.o: adc/adc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/adc" 
+	@${RM} ${OBJECTDIR}/adc/adc.o.d 
+	@${RM} ${OBJECTDIR}/adc/adc.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/adc/adc.o   adc/adc.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/adc/adc.o 
+	@${FIXDEPS} "${OBJECTDIR}/adc/adc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/i2c/i2c.o: i2c/i2c.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/i2c" 
+	@${RM} ${OBJECTDIR}/i2c/i2c.o.d 
+	@${RM} ${OBJECTDIR}/i2c/i2c.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/i2c/i2c.o   i2c/i2c.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/i2c/i2c.o 
+	@${FIXDEPS} "${OBJECTDIR}/i2c/i2c.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/uart/uart.o: uart/uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/uart" 
+	@${RM} ${OBJECTDIR}/uart/uart.o.d 
+	@${RM} ${OBJECTDIR}/uart/uart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/uart/uart.o   uart/uart.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/uart/uart.o 
+	@${FIXDEPS} "${OBJECTDIR}/uart/uart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
 else
 ${OBJECTDIR}/button_matrix/button.o: button_matrix/button.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/button_matrix" 
@@ -169,6 +193,30 @@ ${OBJECTDIR}/lcd/lcd.o: lcd/lcd.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/lcd/lcd.o   lcd/lcd.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/lcd/lcd.o 
 	@${FIXDEPS} "${OBJECTDIR}/lcd/lcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/adc/adc.o: adc/adc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/adc" 
+	@${RM} ${OBJECTDIR}/adc/adc.o.d 
+	@${RM} ${OBJECTDIR}/adc/adc.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/adc/adc.o   adc/adc.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/adc/adc.o 
+	@${FIXDEPS} "${OBJECTDIR}/adc/adc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/i2c/i2c.o: i2c/i2c.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/i2c" 
+	@${RM} ${OBJECTDIR}/i2c/i2c.o.d 
+	@${RM} ${OBJECTDIR}/i2c/i2c.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/i2c/i2c.o   i2c/i2c.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/i2c/i2c.o 
+	@${FIXDEPS} "${OBJECTDIR}/i2c/i2c.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/uart/uart.o: uart/uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/uart" 
+	@${RM} ${OBJECTDIR}/uart/uart.o.d 
+	@${RM} ${OBJECTDIR}/uart/uart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/uart/uart.o   uart/uart.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/uart/uart.o 
+	@${FIXDEPS} "${OBJECTDIR}/uart/uart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 endif
 
