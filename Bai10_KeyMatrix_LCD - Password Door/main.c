@@ -31,6 +31,7 @@
 #define     APPLY_MEM_NEW_PASS      20
 #define     USER_DASHBOARD          21
 #define     USER_CHANGE_PASS        22
+#define     RESET_CHECKIN           23
 
 // Noi khai bao bien toan cuc
 unsigned char arrayMapOfOutput [8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
@@ -55,7 +56,7 @@ void DisplayTime();
 #define ERROR_RETURN    0xffff
 #define CHAR_ERROR_RETURN 0xf
 #define MAX_ID_LENGTH   3
-#define ADMIN_NUM_OF_PAGES     2
+#define ADMIN_NUM_OF_PAGES     3
 #define MANAGE_NUM_OF_PAGES     2
 
 
@@ -108,7 +109,8 @@ unsigned int index_user = 4;
 
 unsigned char admin_page[ADMIN_NUM_OF_PAGES][2] = {
     {UNLOCK_DOOR, ADMIN_CHANGE_PASS},
-    {ADMIN_MEMBER_MANAGER, ADMIN_LOG}
+    {ADMIN_MEMBER_MANAGER, ADMIN_LOG},
+    {RESET_CHECKIN, ADMIN_DASHBOARD}
 };
 unsigned char ad_current_page = 0;
 unsigned char manage_page[MANAGE_NUM_OF_PAGES][2] = {
@@ -137,6 +139,7 @@ void LockDoor();
 void DoorClosed();
 void displayID(int x, int y, unsigned int value, unsigned char indexOfID);
 void reset_package();
+void resetCheckin();
 
 #define     LIGHT_ON      1
 #define     LIGHT_OFF     0
@@ -189,7 +192,7 @@ void init_system(void)
         init_key_matrix();
 //        disable_uart();
 //        init_adc();
-        init_i2c();
+//        init_i2c();
 }
 
 void OpenOutput(int index)
@@ -250,7 +253,7 @@ void App_PasswordDoor()
         case INIT_SYSTEM:
             LcdPrintStringS(0,0,"PRESS # FOR PASS");
 //            LcdPrintStringS(1,0,"                ");
-            DisplayTime();
+//            DisplayTime();
             DoorClosed();
             if (isButtonEnter())
             {
@@ -410,6 +413,10 @@ void App_PasswordDoor()
                 case 1:
                     LcdPrintLineS(0, "1.MANAGE USER");
                     LcdPrintLineS(1, "2.CREATE LOG");
+                    break;
+                case 2:
+                    LcdPrintLineS(0, "1.CLEAR CHECK IN");
+                    LcdPrintLineS(1, "");
                     break;
                 default:
                     break;
@@ -807,6 +814,17 @@ void App_PasswordDoor()
 //                disable_uart();
             }
             break;
+        case RESET_CHECKIN:
+            timeDelay++;
+            LcdPrintLineS(0,"CLEAR CHECK IN");
+            if (timeDelay == 1) {
+                resetCheckin();
+            }
+            if (timeDelay >= 40) {
+                statusPassword = ADMIN_DASHBOARD;
+                reset_package();
+            }
+            break;
         case WRONG_PASSWORD:
             timeDelay++;
             LcdPrintStringS(0,0,"PASSWORD WRONG  ");
@@ -912,6 +930,13 @@ void createlog() {
                 vang++;
             break;    
         }
+    }
+}
+
+void resetCheckin() {
+    int i = 0;
+    for (i = 0; i < num_of_user; i++) {
+        account[i].checkin = VANG;
     }
 }
 
