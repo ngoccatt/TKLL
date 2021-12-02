@@ -32,6 +32,7 @@
 #define     USER_DASHBOARD          21
 #define     USER_CHANGE_PASS        22
 #define     RESET_CHECKIN           23
+#define     WAIT_DOOR               24
 
 // Noi khai bao bien toan cuc
 unsigned char arrayMapOfOutput [8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
@@ -69,6 +70,9 @@ unsigned int hien_dien = 0;
 unsigned int vang = 0;
 unsigned int tre = 0;
 
+
+enum Door_state {OPENED, CLOSED};
+enum Door_state doorState = CLOSED;
 unsigned char arrayMapOfNumber [16] = {1,2,3,'A',4,5,6,'B',
                                        7,8,9,'C','*',0,'E','D'};
 unsigned char arrayMapOfPassword [5][PASSWORD_LENGTH]= {
@@ -99,7 +103,7 @@ unsigned char statusPassword = INIT_SYSTEM;
 
 unsigned char indexOfNumber = 0;
 unsigned char indexOfID = 0;
-unsigned char timeDelay = 0;
+unsigned int timeDelay = 0;
 
 unsigned int current_user = 0;
 unsigned int num_of_user = 4;
@@ -136,7 +140,7 @@ unsigned char isButtonEnter();
 unsigned char isButtonBack();
 void UnlockDoor();
 void LockDoor();
-void DoorClosed();
+void DoorStop();
 void displayID(int x, int y, unsigned int value, unsigned char indexOfID);
 void reset_package();
 void resetCheckin();
@@ -252,9 +256,10 @@ void App_PasswordDoor()
     {
         case INIT_SYSTEM:
             LcdPrintStringS(0,0,"PRESS # FOR PASS");
-//            LcdPrintStringS(1,0,"                ");
+            LcdPrintStringS(1,0,"                ");
 //            DisplayTime();
-            DoorClosed();
+            LockDoor();
+            doorState = CLOSED;
             if (isButtonEnter())
             {
                 reset_package();
@@ -291,7 +296,7 @@ void App_PasswordDoor()
             if (isButtonBack()) {
                 statusPassword = INIT_SYSTEM;
             }
-            if (timeDelay >= 600) {
+            if (timeDelay >= 300) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -332,7 +337,7 @@ void App_PasswordDoor()
             }
             if (indexOfNumber >= PASSWORD_LENGTH)
                 statusPassword = CHECK_PASSWORD;
-            if (timeDelay >= 600)
+            if (timeDelay >= 300)
                 statusPassword = INIT_SYSTEM;
             if (isButtonBack())
                 statusPassword = INIT_SYSTEM;
@@ -367,7 +372,7 @@ void App_PasswordDoor()
                 statusPassword = user_page[1];
                 reset_package();
             }
-            if (timeDelay > 600) {      
+            if (timeDelay > 300) {      
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -399,7 +404,7 @@ void App_PasswordDoor()
                 statusPassword = USER_DASHBOARD;
                 reset_package();
             }
-            if (timeDelay > 600) {
+            if (timeDelay > 300) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -422,7 +427,7 @@ void App_PasswordDoor()
                     break;
             } 
             
-            if (isButtonPress == 1) timeDelay = 0;
+              if (isButtonPress == 1) timeDelay = 0;
             
             if (isButtonEnter()) {
                 ad_current_page = (ad_current_page + 1) % ADMIN_NUM_OF_PAGES;
@@ -439,7 +444,7 @@ void App_PasswordDoor()
                 statusPassword = admin_page[ad_current_page][1];
                 reset_package();
             }
-            if (timeDelay > 100) {      
+            if (timeDelay > 300) {      
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -471,7 +476,7 @@ void App_PasswordDoor()
                 statusPassword = ADMIN_DASHBOARD;
                 reset_package();
             }
-            if (timeDelay > 600) {
+            if (timeDelay > 300) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -499,7 +504,7 @@ void App_PasswordDoor()
                 default:
                     break;
             } 
-            if (isButtonPress == 1) timeDelay = 0;
+            
             if (isButtonEnter()) {
                 ad_mem_cur_page = (ad_mem_cur_page + 1) % MANAGE_NUM_OF_PAGES;
                 timeDelay = 0;
@@ -520,7 +525,7 @@ void App_PasswordDoor()
                 //cap nhat lai so trang cua member khi vao ham REMOVE_MEMBER hay CHANGE_MEMBER
                 ad_num_member_list = (((num_of_user - 1) % 4 == 0) ? ((num_of_user - 1) / 4) : ((num_of_user - 1) / 4) + 1);
             }
-            if (timeDelay > 600) {      
+            if (timeDelay > 300) {      
                 statusPassword = ADMIN_DASHBOARD;
             }
             break;
@@ -553,7 +558,7 @@ void App_PasswordDoor()
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
-            if (timeDelay > 600) {      
+            if (timeDelay > 300) {      
                 statusPassword = ADMIN_DASHBOARD;
                 reset_package();
             }
@@ -631,7 +636,7 @@ void App_PasswordDoor()
                 }
                 timeDelay = 0;
             }
-            if (timeDelay > 600) {
+            if (timeDelay > 300) {
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
@@ -644,7 +649,7 @@ void App_PasswordDoor()
             LcdPrintStringS(1,0,"N:BACK");
             LcdPrintStringS(1,8,"Y:ENTER");
             
-            if(isButtonPress == 1) timeDelay = 0;
+                if (isButtonPress == 1) timeDelay = 0;
             
             if (isButtonEnter()) {
                 reset_package();
@@ -654,7 +659,7 @@ void App_PasswordDoor()
                 reset_package();
                 statusPassword = ADMIN_REMOVE_MEMBER;
             }
-            if (timeDelay > 600) {
+            if (timeDelay > 300) {
                 reset_package();
                 statusPassword = ADMIN_MEMBER_MANAGER;
             }
@@ -726,7 +731,7 @@ void App_PasswordDoor()
                 }
                 timeDelay = 0;
             }
-            if (timeDelay > 600) {
+            if (timeDelay > 300) {
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
@@ -760,7 +765,7 @@ void App_PasswordDoor()
                 statusPassword = ADMIN_CHANGE_MEMBER;
                 reset_package();
             }        
-            if (timeDelay > 600) {
+            if (timeDelay > 300) {
                 statusPassword = ADMIN_MEMBER_MANAGER;
                 reset_package();
             }
@@ -792,7 +797,7 @@ void App_PasswordDoor()
                 statusPassword = ADMIN_DASHBOARD;
                 reset_package();
             }
-            if (timeDelay > 600) {
+            if (timeDelay > 300) {
                 statusPassword = INIT_SYSTEM;
             }
             break;
@@ -802,16 +807,37 @@ void App_PasswordDoor()
             if (timeDelay == 1) {
                 account[current_user].checkin = HIEN_DIEN;
             }
-            LcdPrintStringS(0,0,"OPENING DOOR    ");
-            if (timeDelay < 50) {
+            if (doorState == CLOSED) {
+                LcdPrintStringS(0,0,"OPENING DOOR    ");
                 UnlockDoor();
-            } else {
-                LockDoor();
+            }
+            if (doorState == OPENED) {
+                statusPassword = WAIT_DOOR;
+                reset_package();
+            }
+
+            if (timeDelay >= 40) {
+                statusPassword = WAIT_DOOR;
+                reset_package();
+//                disable_uart();
+            }
+            break;
+        case WAIT_DOOR:
+            timeDelay++;
+            LcdPrintLineS(0,"PRESS # TO ENTER ");
+            LcdPrintLineS(1,"NEXT ID    ");
+            
+            DoorStop();
+            doorState = OPENED;
+            
+            if (isButtonEnter()) {
+                reset_package();
+                statusPassword = ENTER_ID;
             }
             
             if (timeDelay >= 100) {
                 statusPassword = INIT_SYSTEM;
-//                disable_uart();
+                
             }
             break;
         case RESET_CHECKIN:
@@ -883,7 +909,7 @@ void LockDoor()
     OpenOutput(1);
 }
 
-void DoorClosed() {
+void DoorStop() {
     CloseOutput(0);
     CloseOutput(1);
 }
@@ -971,36 +997,9 @@ void DisplayTime()
     second = Read_DS1307(ADDRESS_SECOND);
     minute = Read_DS1307(ADDRESS_MINUTE);
     hour = Read_DS1307(ADDRESS_HOUR);
-//    day = Read_DS1307(ADDRESS_DAY);
     date = Read_DS1307(ADDRESS_DATE);
     month = Read_DS1307(ADDRESS_MONTH);
-//    year = Read_DS1307(ADDRESS_YEAR);
 
-    //////day
-//    switch(day)
-//    {
-//        case 1:
-//            LcdPrintStringS(0,0,"SUN");
-//            break;
-//        case 2:
-//            LcdPrintStringS(0,0,"MON");
-//            break;
-//        case 3:
-//            LcdPrintStringS(0,0,"TUE");
-//            break;
-//        case 4:
-//            LcdPrintStringS(0,0,"WED");
-//            break;
-//        case 5:
-//            LcdPrintStringS(0,0,"THU");
-//            break;
-//        case 6:
-//            LcdPrintStringS(0,0,"FRI");
-//            break;
-//        case 7:
-//            LcdPrintStringS(0,0,"SAT");
-//            break;
-//    }
     if(hour < 10)
     {
         LcdPrintStringS(1,0,"0");
@@ -1026,48 +1025,6 @@ void DisplayTime()
     }
     else
         LcdPrintNumS(1,6,second);
-    
-//    switch(month)
-//    {
-//        case 1:
-//            LcdPrintStringS(1,8,"JAN");
-//            break;
-//        case 2:
-//            LcdPrintStringS(1,8,"FEB");
-//            break;
-//        case 3:
-//            LcdPrintStringS(1,8,"MAR");
-//            break;
-//        case 4:
-//            LcdPrintStringS(1,8,"APR");
-//            break;
-//        case 5:
-//            LcdPrintStringS(1,8,"MAY");
-//            break;
-//        case 6:
-//            LcdPrintStringS(1,8,"JUN");
-//            break;
-//        case 7:
-//            LcdPrintStringS(1,8,"JUL");
-//            break;
-//        case 8:
-//            LcdPrintStringS(1,8,"AUG");
-//            break;
-//        case 9:
-//            LcdPrintStringS(1,8,"SEP");
-//            break;
-//        case 10:
-//            LcdPrintStringS(1,8,"OCT");
-//            break;
-//        case 11:
-//            LcdPrintStringS(1,8,"NOV");
-//            break;
-//        case 12:
-//            LcdPrintStringS(1,8,"DEC");
-//            break;
-//    }
-
-//    LcdPrintStringS(1,11," ");
     if(date < 10)
     {
         LcdPrintStringS(1,11," ");
@@ -1082,7 +1039,5 @@ void DisplayTime()
     } else {
         LcdPrintNumS(1,14,month);
     }
-//    LcdPrintNumS(1,9,20);
-//    LcdPrintNumS(1,15,year);
-
 }
+

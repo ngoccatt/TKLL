@@ -33,8 +33,7 @@ void scan_key_matrix()
 			if((PORT_BUTTON & arrayMaskInputOfKey[j]) == 0)  {
 				key_code[i*MAX_ROW+j] = key_code[i*MAX_ROW+j] + 1;
                 press = 1;
-            }
-			else
+            } else
 				key_code[i*MAX_ROW+j] = 0;   
 		}
 	}

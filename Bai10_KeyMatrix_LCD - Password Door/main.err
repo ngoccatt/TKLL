@@ -1,152 +1,159 @@
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 79 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 164 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 165 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 166 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 181 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 182 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 192 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 254 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 257 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 258 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 260 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 267 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 268 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 286 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 287 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 288 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 291 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 303 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 310 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 83 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 168 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 169 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 170 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 185 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 186 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 196 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 258 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 259 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 261 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 263 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 265 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 272 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 273 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 291 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 292 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 293 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 296 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 308 : call of function without prototype
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 315 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 318 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 323 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 327 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 337 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 343 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 354 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 355 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 359 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 320 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 323 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 328 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 332 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 342 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 348 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 359 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 360 : suspicious pointer conversion
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 364 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 368 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 376 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 377 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 382 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 369 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 373 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 381 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 382 : call of function without prototype
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 387 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 394 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 396 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 398 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 400 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 410 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 411 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 414 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 392 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 399 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 401 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 403 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 405 : call of function without prototype
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 415 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 418 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 416 : suspicious pointer conversion
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 419 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 427 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 431 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 420 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 423 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 424 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 432 : call of function without prototype
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 436 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 440 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 448 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 449 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 454 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 441 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 445 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 453 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 454 : call of function without prototype
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 459 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 466 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 468 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 470 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 472 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 480 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 482 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 492 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 493 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 496 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 464 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 471 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 473 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 475 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 477 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 485 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 487 : suspicious pointer conversion
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 497 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 503 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 507 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 509 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 513 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 519 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 529 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 531 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 536 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 498 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 501 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 502 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 508 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 512 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 514 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 518 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 524 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 534 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 536 : call of function without prototype
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 541 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 548 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 550 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 552 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 554 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 558 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 563 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 564 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 580 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 587 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 591 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 546 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 553 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 555 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 557 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 559 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 563 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 568 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 569 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 585 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 592 : suspicious pointer conversion
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 596 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 600 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 604 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 606 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 601 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 605 : suspicious pointer conversion
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 609 : call of function without prototype
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 611 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 613 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 630 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 636 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 641 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 644 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 645 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 649 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 650 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 653 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 614 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 616 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 618 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 635 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 641 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 646 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 649 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 650 : suspicious pointer conversion
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 654 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 655 : call of function without prototype
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 658 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 665 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 667 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 675 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 682 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 686 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 659 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 663 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 670 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 672 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 680 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 687 : suspicious pointer conversion
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 691 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 695 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 699 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 701 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 696 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 700 : suspicious pointer conversion
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 704 : call of function without prototype
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 706 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 708 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 725 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 731 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 736 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 738 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 743 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 709 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 711 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 713 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 730 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 736 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 741 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 743 : call of function without prototype
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 748 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 755 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 757 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 759 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 761 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 765 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 770 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 772 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 776 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 782 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 784 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 785 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 787 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 753 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 760 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 762 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 764 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 766 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 770 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 775 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 777 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 781 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 787 : call of function without prototype
 Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 789 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 791 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 793 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 805 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 807 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 809 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 819 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 790 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 792 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 794 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 796 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 798 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 811 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 812 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 816 : call of function without prototype
 Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 821 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 825 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 830 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 893 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 896 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 899 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 902 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 908 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 947 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1006 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1012 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1015 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1021 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1024 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1073 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1078 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1080 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 827 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 828 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 830 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 833 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 834 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 845 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 847 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 851 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 856 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 919 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 922 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 925 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 928 : suspicious pointer conversion
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 934 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 973 : call of function without prototype
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1005 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1011 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1014 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1020 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1023 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1030 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1035 : suspicious pointer conversion
+Warning[2054] D:\GitHub\TKLL\TKLL\Bai10_KeyMatrix_LCD - Password Door\main.c 1037 : suspicious pointer conversion
