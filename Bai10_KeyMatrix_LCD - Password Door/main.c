@@ -359,7 +359,7 @@ void App_PasswordDoor()
             LcdPrintLineS(0, "1.OPEN DOOR");
             LcdPrintLineS(1, "2.CHANGE PASS");
             
-            if (isButtonPress == 1) timeDelay = 0;
+            
             
             if (isButtonBack()){
                 statusPassword = INIT_SYSTEM;
@@ -372,6 +372,9 @@ void App_PasswordDoor()
                 statusPassword = user_page[1];
                 reset_package();
             }
+            
+            if (isButtonNumber()) timeDelay = 0;
+            
             if (timeDelay > 300) {      
                 statusPassword = INIT_SYSTEM;
             }
@@ -427,7 +430,7 @@ void App_PasswordDoor()
                     break;
             } 
             
-              if (isButtonPress == 1) timeDelay = 0;
+              
             
             if (isButtonEnter()) {
                 ad_current_page = (ad_current_page + 1) % ADMIN_NUM_OF_PAGES;
@@ -444,6 +447,9 @@ void App_PasswordDoor()
                 statusPassword = admin_page[ad_current_page][1];
                 reset_package();
             }
+            
+            if (isButtonNumber()) timeDelay = 0;
+            
             if (timeDelay > 300) {      
                 statusPassword = INIT_SYSTEM;
             }
@@ -649,7 +655,7 @@ void App_PasswordDoor()
             LcdPrintStringS(1,0,"N:BACK");
             LcdPrintStringS(1,8,"Y:ENTER");
             
-                if (isButtonPress == 1) timeDelay = 0;
+                
             
             if (isButtonEnter()) {
                 reset_package();
@@ -659,6 +665,9 @@ void App_PasswordDoor()
                 reset_package();
                 statusPassword = ADMIN_REMOVE_MEMBER;
             }
+            
+            if (isButtonNumber()) timeDelay = 0;
+            
             if (timeDelay > 300) {
                 reset_package();
                 statusPassword = ADMIN_MEMBER_MANAGER;
