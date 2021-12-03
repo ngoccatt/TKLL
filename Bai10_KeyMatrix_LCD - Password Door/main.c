@@ -33,6 +33,8 @@
 #define     USER_CHANGE_PASS        22
 #define     RESET_CHECKIN           23
 #define     WAIT_DOOR               24
+#define     CHANGE_TIME             25
+#define     CHANGE_LATE_TIME        26
 
 // Noi khai bao bien toan cuc
 unsigned char arrayMapOfOutput [8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
@@ -49,7 +51,7 @@ void createlog();
 
 void SetupTimeForRealTime();
 void SetupForFirstProgram(void);
-void DisplayTime();
+void DisplayRealTime();
 
 //Chuong trinh Password Door
 #define PASSWORD_LENGTH 6
@@ -57,13 +59,18 @@ void DisplayTime();
 #define ERROR_RETURN    0xffff
 #define CHAR_ERROR_RETURN 0xf
 #define MAX_ID_LENGTH   3
-#define ADMIN_NUM_OF_PAGES     3
+#define ADMIN_NUM_OF_PAGES     4
 #define MANAGE_NUM_OF_PAGES     2
 
 
 unsigned char second = 0,minute = 0,hour = 0;
-unsigned char day = 0;
-unsigned char date = 0,month = 0,year = 0;
+unsigned char temp_hour = 0;
+unsigned char temp_minute = 0;
+unsigned char temp_second = 0;
+
+unsigned char late_hour = 0;
+unsigned char late_minute = 0;
+unsigned char late_second = 0;
 
 enum Check_in {HIEN_DIEN, TRE, VANG};
 unsigned int hien_dien = 0;
@@ -114,7 +121,8 @@ unsigned int index_user = 4;
 unsigned char admin_page[ADMIN_NUM_OF_PAGES][2] = {
     {UNLOCK_DOOR, ADMIN_CHANGE_PASS},
     {ADMIN_MEMBER_MANAGER, ADMIN_LOG},
-    {RESET_CHECKIN, ADMIN_DASHBOARD}
+    {RESET_CHECKIN, CHANGE_TIME}, 
+    {CHANGE_LATE_TIME, ADMIN_DASHBOARD}
 };
 unsigned char ad_current_page = 0;
 unsigned char manage_page[MANAGE_NUM_OF_PAGES][2] = {
@@ -145,13 +153,25 @@ void displayID(int x, int y, unsigned int value, unsigned char indexOfID);
 void reset_package();
 void resetCheckin();
 
-#define     LIGHT_ON      1
-#define     LIGHT_OFF     0
-void BaiTap_Den();
-unsigned char isButtonLight();
-unsigned char statusLight = LIGHT_OFF;
-void LightOn();
-void LightOff();
+//CLOCK SECTION
+
+#define INIT_CLOCK      1
+#define GET_TIME        2
+#define CHANGE_HOUR     3
+#define CHANGE_MINUTE   4
+#define CHANGE_SECOND   5
+#define SET_TIME        6
+
+unsigned char clockState = INIT_CLOCK;
+unsigned char blinking = 0;
+
+void DisplayTempTime(unsigned char hour, unsigned char minute, unsigned char second);
+void smolClock();
+void smolLateClock();
+unsigned char isButtonIncrease();
+unsigned char isButtonDecrease();
+unsigned char isButtonMode();
+unsigned char isClockWorking();
 ////////////////////////////////////////////////////////////////////
 //Hien thuc cac chuong trinh con, ham, module, function duoi cho nay
 ////////////////////////////////////////////////////////////////////
@@ -196,7 +216,7 @@ void init_system(void)
         init_key_matrix();
 //        disable_uart();
 //        init_adc();
-//        init_i2c();
+        init_i2c();
 }
 
 void OpenOutput(int index)
@@ -257,7 +277,7 @@ void App_PasswordDoor()
         case INIT_SYSTEM:
             LcdPrintStringS(0,0,"PRESS # FOR PASS");
             LcdPrintStringS(1,0,"                ");
-//            DisplayTime();
+            DisplayRealTime();
             LockDoor();
             doorState = CLOSED;
             if (isButtonEnter())
@@ -424,6 +444,10 @@ void App_PasswordDoor()
                     break;
                 case 2:
                     LcdPrintLineS(0, "1.CLEAR CHECK IN");
+                    LcdPrintLineS(1, "2.CHANGE TIME");
+                    break;
+                case 3:
+                    LcdPrintLineS(0, "1.CHANGE L.TIME");
                     LcdPrintLineS(1, "");
                     break;
                 default:
@@ -810,6 +834,36 @@ void App_PasswordDoor()
                 statusPassword = INIT_SYSTEM;
             }
             break;
+        case CHANGE_TIME:
+            timeDelay++;
+            smolClock();
+            if (isClockWorking()) timeDelay = 0;
+            
+            if (isButtonBack()) {
+                statusPassword = ADMIN_DASHBOARD;
+                clockState = INIT_CLOCK;
+            }
+            
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                clockState = INIT_CLOCK;
+            }
+            break;
+        case CHANGE_LATE_TIME:
+            timeDelay++;
+            smolLateClock();
+            if (isClockWorking()) timeDelay = 0;
+            
+            if (isButtonBack()) {
+                statusPassword = ADMIN_DASHBOARD;
+                clockState = INIT_CLOCK;
+            }
+            
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                clockState = INIT_CLOCK;
+            }
+            break;
         case UNLOCK_DOOR:
             
             timeDelay++;
@@ -989,64 +1043,269 @@ void SetupTimeForRealTime()
     second = 50;
     minute = 59;
     hour = 23;
-    date = 31;
-    month = 12;
-    year = 14;
     
     write_ds1307(ADDRESS_SECOND, second);
     write_ds1307(ADDRESS_MINUTE, minute);
     write_ds1307(ADDRESS_HOUR, hour);
-    write_ds1307(ADDRESS_DATE, date);
-    write_ds1307(ADDRESS_MONTH, month);
-    write_ds1307(ADDRESS_YEAR, year);
 }
 
-void DisplayTime()
+void DisplayRealTime()
 {
     second = Read_DS1307(ADDRESS_SECOND);
     minute = Read_DS1307(ADDRESS_MINUTE);
     hour = Read_DS1307(ADDRESS_HOUR);
-    date = Read_DS1307(ADDRESS_DATE);
-    month = Read_DS1307(ADDRESS_MONTH);
+//    date = Read_DS1307(ADDRESS_DATE);
+//    month = Read_DS1307(ADDRESS_MONTH);
 
     if(hour < 10)
     {
-        LcdPrintStringS(1,0,"0");
-        LcdPrintNumS(1,1,hour);
+        LcdPrintStringS(1,7,"0");
+        LcdPrintNumS(1,8,hour);
     }
     else
-        LcdPrintNumS(1,0,hour);
+        LcdPrintNumS(1,7,hour);
     
-    LcdPrintStringS(1,2,":");
+    LcdPrintStringS(1,9,":");
     if(minute < 10)
     {
-        LcdPrintStringS(1,3,"0");
-        LcdPrintNumS(1,4,minute);
+        LcdPrintStringS(1,10,"0");
+        LcdPrintNumS(1,11,minute);
     }
     else
-        LcdPrintNumS(1,3,minute);
+        LcdPrintNumS(1,10,minute);
 
-    LcdPrintStringS(1,5,":");
+    LcdPrintStringS(1,12,":");
     if(second < 10)
     {
-        LcdPrintStringS(1,6,"0");
-        LcdPrintNumS(1,7,second);
+        LcdPrintStringS(1,13,"0");
+        LcdPrintNumS(1,14,second);
     }
     else
-        LcdPrintNumS(1,6,second);
-    if(date < 10)
+        LcdPrintNumS(1,13,second);
+    
+}
+
+void DisplayTempTime(unsigned char hour, unsigned char minute, unsigned char second)
+{
+//    second = Read_DS1307(ADDRESS_SECOND);
+//    minute = Read_DS1307(ADDRESS_MINUTE);
+//    hour = Read_DS1307(ADDRESS_HOUR);
+//    date = Read_DS1307(ADDRESS_DATE);
+//    month = Read_DS1307(ADDRESS_MONTH);
+
+    if(hour < 10)
     {
-        LcdPrintStringS(1,11," ");
-        LcdPrintNumS(1,12,date);
+        LcdPrintStringS(1,7,"0");
+        LcdPrintNumS(1,8,hour);
     }
     else
-        LcdPrintNumS(1,11,date);
-    LcdPrintStringS(1,13,"/");
-    if (month < 10) {
-        LcdPrintStringS(1,14," ");
-        LcdPrintNumS(1,15,month);
-    } else {
-        LcdPrintNumS(1,14,month);
+        LcdPrintNumS(1,7,hour);
+    
+    LcdPrintStringS(1,9,":");
+    if(minute < 10)
+    {
+        LcdPrintStringS(1,10,"0");
+        LcdPrintNumS(1,11,minute);
     }
+    else
+        LcdPrintNumS(1,10,minute);
+
+    LcdPrintStringS(1,12,":");
+    if(second < 10)
+    {
+        LcdPrintStringS(1,13,"0");
+        LcdPrintNumS(1,14,second);
+    }
+    else
+        LcdPrintNumS(1,13,second);
+    
+}
+
+void smolClock() {
+    
+    switch (clockState) {
+        case INIT_CLOCK:
+                LcdPrintLineS(0,"CHANGE TIME");
+                DisplayRealTime();
+                if (isButtonMode()) {
+                    clockState = GET_TIME;
+                }
+            break;
+        case GET_TIME:
+                temp_second = Read_DS1307(ADDRESS_SECOND);
+                temp_minute = Read_DS1307(ADDRESS_MINUTE);
+                temp_hour = Read_DS1307(ADDRESS_HOUR);
+                clockState = CHANGE_HOUR;
+            break;
+            case CHANGE_HOUR:
+                
+                DisplayTempTime(temp_hour, temp_minute, temp_second);
+                if (key_code[0] == 0 && key_code[1] == 0) {
+                    if (blinking < 10) {
+                         LcdPrintStringS(1,7,"  ");
+                    }
+                }
+                if (isButtonIncrease()) {
+                    temp_hour = (temp_hour + 1) % 24;
+                }
+                if (isButtonDecrease()) {
+                    temp_hour--;
+                    if (temp_hour > 23) temp_hour = 23;
+                }
+                if (isButtonMode()) {
+                    clockState = CHANGE_MINUTE;
+                }
+            break;
+            case CHANGE_MINUTE:
+               
+                DisplayTempTime(temp_hour, temp_minute, temp_second);
+                if (key_code[0] == 0 && key_code[1] == 0) {
+                    if (blinking < 10) {
+                         LcdPrintStringS(1,10,"  ");
+                    }
+                }
+                if (isButtonIncrease()) {
+                    temp_minute = (temp_minute + 1) % 60;
+                }
+                if (isButtonDecrease()) {
+                    temp_minute--;
+                    if (temp_minute > 59) temp_minute = 59;
+                }
+                if (isButtonMode()) {
+                    clockState = CHANGE_SECOND;
+                }
+            break;
+            case CHANGE_SECOND:
+                
+                DisplayTempTime(temp_hour, temp_minute, temp_second);
+                if (key_code[0] == 0 && key_code[1] == 0) {
+                    if (blinking < 10) {
+                         LcdPrintStringS(1,13,"  ");
+                    }
+                }
+                if (isButtonIncrease()) {
+                    temp_second = (temp_second + 1) % 60;
+                }
+                if (isButtonDecrease()) {
+                    temp_second--;
+                    if (temp_second > 59) temp_second = 59;
+                }
+                if (isButtonMode()) {
+                    clockState = SET_TIME;
+                }
+            break;
+            case SET_TIME:
+                write_ds1307(ADDRESS_SECOND, temp_second);
+                write_ds1307(ADDRESS_MINUTE, temp_minute);
+                write_ds1307(ADDRESS_HOUR, temp_hour);
+                clockState = INIT_CLOCK;
+            break;
+        default:
+            clockState = INIT_CLOCK;
+            break;
+            
+    }
+    blinking = (blinking + 1) % 20;
+}
+
+void smolLateClock() {
+    switch (clockState) {
+        case INIT_CLOCK:
+            LcdPrintLineS(0,"CHANGE LATE TIME");
+            DisplayTempTime(late_hour, late_minute, late_second);
+            if (isButtonMode()) {
+                clockState = CHANGE_HOUR;
+            }
+        break;
+
+        case CHANGE_HOUR:
+            
+            DisplayTempTime(late_hour, late_minute, late_second);
+            if (key_code[0] == 0 && key_code[1] == 0) {
+                if (blinking < 10) {
+                     LcdPrintStringS(1,7,"  ");
+                }
+            }
+            if (isButtonIncrease()) {
+                late_hour = (late_hour + 1) % 24;
+                
+            }
+            if (isButtonDecrease()) {
+                late_hour--;
+                if (late_hour > 23) late_hour = 23;
+                
+            }
+            if (isButtonMode()) {
+                clockState = CHANGE_MINUTE;
+            }
+        break;
+        case CHANGE_MINUTE:
+            
+            DisplayTempTime(late_hour, late_minute, late_second);
+            if (key_code[0] == 0 && key_code[1] == 0) {
+                if (blinking < 10) {
+                     LcdPrintStringS(1,10,"  ");
+                }
+            }
+            if (isButtonIncrease()) {
+                late_minute = (late_minute + 1) % 60;
+                
+            }
+            if (isButtonDecrease()) {
+                late_minute--;
+                if (late_minute > 59) late_minute = 59;
+                
+            }
+            if (isButtonMode()) {
+                clockState = CHANGE_SECOND;
+            }
+        break;
+        case CHANGE_SECOND:
+            
+            DisplayTempTime(late_hour, late_minute, late_second);
+            if (key_code[0] == 0 && key_code[1] == 0) {
+                if (blinking < 10) {
+                     LcdPrintStringS(1,13,"  ");
+                }
+            }
+            if (isButtonIncrease()) {
+                late_second = (late_second + 1) % 60;
+                
+            }
+            if (isButtonDecrease()) {
+                late_second--;
+                if (late_second > 59) late_second = 59;
+                
+            }
+            if (isButtonMode()) {
+                clockState = INIT_CLOCK;
+            }
+        break;
+        default:
+            clockState = INIT_CLOCK;
+        break;
+            
+    }
+    blinking = (blinking + 1) % 20;
+}
+
+unsigned char isButtonIncrease() {
+    if (key_code[0] == 1 || (key_code[0] > 20 && key_code[0] % 5 == 0)) return 1;
+    else return 0;
+}
+
+unsigned char isButtonDecrease() {
+    if (key_code[1] == 1  || (key_code[1] > 20 && key_code[1] % 5 == 0)) return 1;
+    else return 0;
+}
+
+unsigned char isButtonMode() {
+    if (key_code[2] == 1) return 1;
+    else return 0;
+}
+
+unsigned char isClockWorking() {
+    if (key_code[0] > 0 || key_code[1] > 0 || key_code[2] > 0) return 1;
+    return 0;
 }
 

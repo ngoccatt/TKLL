@@ -1,16 +1,5 @@
-/* 
- * File:   i2c.h
- * Author: ngocc
- *
- * Created on November 26, 2021, 3:59 PM
- */
-
-#ifndef I2C_H
-#define	I2C_H
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
+#ifndef _I2C_H_
+#define _I2C_H_
 
 #include <p18f4620.h>
 
@@ -59,10 +48,4 @@ extern unsigned char receive_flag,ack_flag;
 extern unsigned char i2c_data;
 extern unsigned char ack_bit;
 
-
-#ifdef	__cplusplus
-}
 #endif
-
-#endif	/* I2C_H */
-
