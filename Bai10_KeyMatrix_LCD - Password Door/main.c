@@ -72,6 +72,10 @@ unsigned char late_hour = 0;
 unsigned char late_minute = 0;
 unsigned char late_second = 0;
 
+unsigned char current_hour = 0;
+unsigned char current_minute = 0;
+unsigned char current_second = 0;
+
 enum Check_in {HIEN_DIEN, TRE, VANG};
 unsigned int hien_dien = 0;
 unsigned int vang = 0;
@@ -867,9 +871,41 @@ void App_PasswordDoor()
         case UNLOCK_DOOR:
             
             timeDelay++;
+            
             if (timeDelay == 1) {
-                account[current_user].checkin = HIEN_DIEN;
+                
+                current_second = Read_DS1307(ADDRESS_SECOND);
+                current_minute = Read_DS1307(ADDRESS_MINUTE);
+                current_hour = Read_DS1307(ADDRESS_HOUR);
+                
+                if (current_hour > late_hour) {
+                    account[current_user].checkin = TRE;
+                }
+                else if (current_hour == late_hour){
+                    if (current_minute > late_minute) {
+                        account[current_user].checkin = TRE;
+                    }
+                    else if (current_minute == late_minute) {
+                        if (current_second > late_second) {
+                            account[current_user].checkin = TRE;
+                        }
+                        else {
+                            account[current_user].checkin = HIEN_DIEN;
+                        }
+                    }
+                    else {
+                        account[current_user].checkin = HIEN_DIEN;
+                    }
+                }
+                else {
+                    account[current_user].checkin = HIEN_DIEN;
+                }
             }
+            
+            
+//            if (timeDelay == 1) {
+//                account[current_user].checkin = HIEN_DIEN;
+//            }
             if (doorState == CLOSED) {
                 LcdPrintStringS(0,0,"OPENING DOOR    ");
                 UnlockDoor();
@@ -896,6 +932,7 @@ void App_PasswordDoor()
             if (isButtonEnter()) {
                 reset_package();
                 statusPassword = ENTER_ID;
+                ID_value = 0;
             }
             
             if (timeDelay >= 100) {
