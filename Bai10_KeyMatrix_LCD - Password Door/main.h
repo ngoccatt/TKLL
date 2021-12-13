@@ -7,6 +7,7 @@
 #include "button_matrix\button.h"
 #include "lcd\lcd.h"
 #include "i2c\i2c.h"
+#include "password_door\password_door.h"
 
 #pragma config OSC		= HS
 #pragma config FCMEN            = OFF
@@ -41,5 +42,16 @@
 #pragma config EBTR2            = OFF
 #pragma config EBTR3            = OFF
 #pragma config EBTRB            = OFF
+
+
+extern unsigned char arrayMapOfOutput[];
+extern unsigned char statusOutput[];
+
+void OpenOutput(int index);
+void CloseOutput(int index);
+void TestOutput(void);
+void ReverseOutput(int index);
+
+
 
 #endif

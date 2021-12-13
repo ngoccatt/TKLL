@@ -1,32 +1,13 @@
 #include "clock.h"
 
-#include "../i2c/i2c.h"
-#include "../lcd/lcd.h"
-#include "../main.h"
-#include "../button_matrix/button.h"
-
-
-//CLOCK SECTION
-
-#define INIT_CLOCK      1
-#define GET_TIME        2
-#define CHANGE_HOUR     3
-#define CHANGE_MINUTE   4
-#define CHANGE_SECOND   5
-#define SET_TIME        6
+#include "..\i2c\i2c.h"
+#include "..\lcd\lcd.h"
+#include "..\button_matrix\button.h"
+#include "..\password_door\password_door.h"
 
 #define     ADDRESS_FIRST_PROGRAM   0x20
 
-unsigned char clockState = INIT_CLOCK;
-unsigned char blinking = 0;
-
-void DisplayTempTime(unsigned char hour, unsigned char minute, unsigned char second);
-void smolClock();
-void smolLateClock();
-unsigned char isButtonIncrease();
-unsigned char isButtonDecrease();
-unsigned char isButtonMode();
-
+unsigned char clockState =  INIT_CLOCK;
 
 unsigned char second = 0,minute = 0,hour = 0;
 unsigned char temp_hour = 0;
@@ -37,6 +18,21 @@ unsigned char late_hour = 0;
 unsigned char late_minute = 0;
 unsigned char late_second = 0;
 
+void SetupTimeForRealTime();
+void SetupForFirstProgram(void);
+void DisplayRealTime();
+
+void DisplayTempTime(unsigned char hour, unsigned char minute, unsigned char second);
+void smolClock();
+void smolLateClock();
+unsigned char isButtonIncrease();
+unsigned char isButtonDecrease();
+unsigned char isButtonMode();
+
+unsigned int blinking = 0;
+
+
+//CLOCK SECTION
 
 
 
@@ -298,4 +294,19 @@ void smolLateClock() {
             
     }
     blinking = (blinking + 1) % 20;
+}
+
+unsigned char isButtonIncrease() {
+    if (key_code[0] == 1 || (key_code[0] > 20 && key_code[0] % 5 == 0)) return 1;
+    else return 0;
+}
+
+unsigned char isButtonDecrease() {
+    if (key_code[1] == 1  || (key_code[1] > 20 && key_code[1] % 5 == 0)) return 1;
+    else return 0;
+}
+
+unsigned char isButtonMode() {
+    if (key_code[2] == 1) return 1;
+    else return 0;
 }
