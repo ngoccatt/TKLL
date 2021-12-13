@@ -32,16 +32,10 @@ void scan_key_matrix()
 		{ 
 			if((PORT_BUTTON & arrayMaskInputOfKey[j]) == 0)  {
 				key_code[i*MAX_ROW+j] = key_code[i*MAX_ROW+j] + 1;
-                press = 1;
             } else
 				key_code[i*MAX_ROW+j] = 0;   
 		}
 	}
-    if (press == 1) {
-        isButtonPress = 1;
-    } else {
-        isButtonPress = 0;
-    }
 }
 
 void scan_key_matrix_with_uart()

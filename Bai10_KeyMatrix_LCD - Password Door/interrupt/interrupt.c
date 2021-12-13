@@ -4,7 +4,7 @@
 
 unsigned int cnt0 = 0,cnt1 = 0;
 
-void init_interrupt(void)
+ void init_interrupt(void)
 {
 	INTCONbits.GIE = 1;  //enable global interrupt
 	RCONbits.IPEN = 1;   //enable interrupt priority

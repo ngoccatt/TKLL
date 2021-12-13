@@ -10,11 +10,17 @@
 #define ACK		0
 #define N_ACK		1
 
-#define TRIS_SCL	TRISCbits.RC3
+
+//TRIS: xac dinh chan la input hay output. Neu la 0->output, 1->input
+//chan input se doc gia tri
+//chan output se dieu khien gia tri.
+#define TRIS_SCL	TRISCbits.RC3       
 #define TRIS_SDA	TRISCbits.RC4
 #define SSPENB 		0x20
 #define RTC_ADD		0xd0
 
+
+//PORT: gia tri cua chan.
 #define SCL         PORTCbits.RC3
 #define SDA         PORTCbits.RC4
 

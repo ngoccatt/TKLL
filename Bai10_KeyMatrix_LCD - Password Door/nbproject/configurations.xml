@@ -12,6 +12,8 @@
       <itemPath>i2c/i2c.h</itemPath>
       <itemPath>uart/uart.h</itemPath>
       <itemPath>adc/adc.h</itemPath>
+      <itemPath>password_door/password_door.h</itemPath>
+      <itemPath>clock/clock.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -28,6 +30,8 @@
       <itemPath>adc/adc.c</itemPath>
       <itemPath>i2c/i2c.c</itemPath>
       <itemPath>uart/uart.c</itemPath>
+      <itemPath>clock/clock.c</itemPath>
+      <itemPath>password_door/password_door.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -43,6 +47,8 @@
     <Elem>i2c</Elem>
     <Elem>uart</Elem>
     <Elem>adc</Elem>
+    <Elem>clock</Elem>
+    <Elem>password_door</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

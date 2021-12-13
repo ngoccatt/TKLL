@@ -6,8 +6,6 @@
 #include "interrupt\interrupt.h"
 #include "button_matrix\button.h"
 #include "lcd\lcd.h"
-#include "uart\uart.h"
-#include "adc\adc.h"
 #include "i2c\i2c.h"
 
 #pragma config OSC		= HS

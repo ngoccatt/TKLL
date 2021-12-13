@@ -175,7 +175,7 @@ void smolLateClock();
 unsigned char isButtonIncrease();
 unsigned char isButtonDecrease();
 unsigned char isButtonMode();
-unsigned char isClockWorking();
+
 ////////////////////////////////////////////////////////////////////
 //Hien thuc cac chuong trinh con, ham, module, function duoi cho nay
 ////////////////////////////////////////////////////////////////////
@@ -183,7 +183,8 @@ void main(void)
 {
 	unsigned int k = 0;
 	init_system();
-        //TestOutput();
+    SetupForFirstProgram();
+    delay_ms(1000);
 	while (1)
 	{
             while (!flag_timer3);
@@ -282,7 +283,7 @@ void App_PasswordDoor()
             LcdPrintStringS(0,0,"PRESS # FOR PASS");
             LcdPrintStringS(1,0,"                ");
             DisplayRealTime();
-            LockDoor();
+//            LockDoor();
             doorState = CLOSED;
             if (isButtonEnter())
             {
@@ -841,7 +842,7 @@ void App_PasswordDoor()
         case CHANGE_TIME:
             timeDelay++;
             smolClock();
-            if (isClockWorking()) timeDelay = 0;
+            if (isButtonNumber()) timeDelay = 0;
             
             if (isButtonBack()) {
                 statusPassword = ADMIN_DASHBOARD;
@@ -856,7 +857,7 @@ void App_PasswordDoor()
         case CHANGE_LATE_TIME:
             timeDelay++;
             smolLateClock();
-            if (isClockWorking()) timeDelay = 0;
+            if (isButtonNumber()) timeDelay = 0;
             
             if (isButtonBack()) {
                 statusPassword = ADMIN_DASHBOARD;
@@ -1066,14 +1067,7 @@ void resetCheckin() {
     }
 }
 
-void SetupForFirstProgram(void)
-{
-    if(Read_DS1307(ADDRESS_FIRST_PROGRAM) != 0x22)
-    {
-        SetupTimeForRealTime();
-        Write_DS1307(ADDRESS_FIRST_PROGRAM, 0x22);
-    }
-}
+
 
 void SetupTimeForRealTime()
 {
@@ -1084,6 +1078,15 @@ void SetupTimeForRealTime()
     write_ds1307(ADDRESS_SECOND, second);
     write_ds1307(ADDRESS_MINUTE, minute);
     write_ds1307(ADDRESS_HOUR, hour);
+}
+
+void SetupForFirstProgram(void)
+{
+    if(Read_DS1307(ADDRESS_FIRST_PROGRAM) != 0x22)
+    {
+        SetupTimeForRealTime();
+        Write_DS1307(ADDRESS_FIRST_PROGRAM, 0x22);
+    } 
 }
 
 void DisplayRealTime()
@@ -1341,8 +1344,5 @@ unsigned char isButtonMode() {
     else return 0;
 }
 
-unsigned char isClockWorking() {
-    if (key_code[0] > 0 || key_code[1] > 0 || key_code[2] > 0) return 1;
-    return 0;
-}
+
 

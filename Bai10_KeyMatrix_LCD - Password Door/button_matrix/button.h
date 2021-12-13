@@ -9,7 +9,6 @@
 #define MAX_ROW			4
 
 extern unsigned int key_code[];
-extern unsigned char isButtonPress;
 
 
 void init_key_matrix();

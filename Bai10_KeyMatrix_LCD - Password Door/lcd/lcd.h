@@ -39,7 +39,7 @@
 #define READ 1	// read mode
 #define WRITE 0	// write mode
 
-#define LCD_DATA_4BIT_HIGH	1 // 4BIT_HIGHT is true
+#define LCD_DATA_4BIT_HIGH	1 // 4BIT_HIGHT is true -> using the LCD in 4bits mode
 #define LCD_PORT 	PORTB
 #define LCD_DDR 	TRISB
 

@@ -45,22 +45,28 @@ void v_timer0(unsigned long time)
 }
 void lcd_sendCommand(unsigned char cmd)	//Sends Command to LCD
 {
+    //transfer first 4 bits--------------------
 	LCD_PORT&=0x0f;
 	LCD_PORT|=(cmd&0xf0);
-	LCD_PORT|=(1 << LCD_E);
-	//lcd_delay(1);
+    
+	LCD_PORT|=(1 << LCD_E);     //raise RE
 	v_timer0(1);
 
-	LCD_PORT&=~(1 <<LCD_E);
+	LCD_PORT&=~(1 <<LCD_E);     //low RE
 	v_timer0(1);
-
+    //-------------------------------------------
+    
+    //transfer last 4 bits-----------------------
 	LCD_PORT&=0x0f;
 	LCD_PORT|=(cmd<<4);
-	LCD_PORT|=(1 <<LCD_E);
+    
+	LCD_PORT|=(1 <<LCD_E);      //raise RE
 	v_timer0(1);
 
-	LCD_PORT&=~(1 <<LCD_E);
+	LCD_PORT&=~(1 <<LCD_E);     //low RE
 	v_timer0(1);
+    
+    //--------------------------------------------
 }
 
 void init_lcd() {
@@ -169,12 +175,12 @@ unsigned char lcd_wait_busy() {
 /*=================================================*/
 /*=================================================*/
 /* send 4bits data from MCU to LCD */
-void lcd_write_4bits(unsigned char dat) {	
+void lcd_write_4bits(unsigned char dat) {           //ham nay truyen 4 bit cao len d4 -> d7
 	//RW(WRITE);
-        LCD_DATA_OUT(dat);
-	EN(SET);
+    LCD_DATA_OUT(dat);          //LCD_DATA_OUT: ghi du lieu dat vao 4 chan d4 -> d7
+	EN(SET);                    //dua chan E len 1
         lcd_delay(5);
-	EN(CLR);
+	EN(CLR);                    //ha chan E xuong
         lcd_delay(5);
 }
 
@@ -200,12 +206,12 @@ void lcd_write_cmd(unsigned char cmd){
 /* ham goi data den LCD */
 void lcd_write_data(unsigned char data) {
         //lcd_wait_busy();
-	RS(DAT);
+	RS(DAT);                        //Chan RS xuong 1 de LCD hieu la minh muon chuyen Data
         lcd_delay(5);
 	if (LCD_DATA_4BIT_HIGH)
 	{
-		lcd_write_4bits(data);
-		lcd_write_4bits(data<<4);
+		lcd_write_4bits(data);      //truyen 4 bit cao truoc
+		lcd_write_4bits(data<<4);   //truen 4 bit thap sau.
 	}
 	else
 	{
@@ -237,12 +243,15 @@ void lcd_print_str (const rom unsigned char *string)
   }
 }
 
-void lcd_set_cursor (unsigned char row, unsigned char column)
+void lcd_set_cursor (unsigned char row, unsigned char column)       //ham nay dung de dat vi tri con tro
 {
+    //Su dung ham "Set DDRAM address"
+    //  RS RW D7 D6 -> D0
+    //  0  0  1  address 
   unsigned char address;
 
-  address = (row%2 * 0x40) + column%16;
-  address = 0x80 + (address & 0x7F);
+  address = (row%2 * 0x40) + column%16;  //1 address 7 bit
+  address = 0x80 + (address & 0x7F);   
   lcd_write_cmd(address);               /* Set DDRAM address counter to 0     */											  
 }
 

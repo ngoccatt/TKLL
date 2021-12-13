@@ -237,6 +237,8 @@ char i2c_write_byte(char data)
 	}
 	
 	// Let the slave drive data
+    //mo khoa chan SDA = 1 -> chan SDA thanh chan input, de doc du lieu chuyen
+    //toi tu DS1307
 	TRIS_SDA = 1;
 	//delay_i2c(TIME_I2C_DELAY);
 	
@@ -250,6 +252,8 @@ char i2c_write_byte(char data)
 	SCL = 0;
 	//delay_i2c(TIME_I2C_DELAY);
 	
+//    thu hoi lai chan SDA = 0 -> chan SDA thanh chan output, 
+//    MCU se dieu khien chan SDA.
 	TRIS_SDA = 0;
 	
 	return nack;
@@ -277,7 +281,8 @@ char i2c_read_byte(char ack)
 	}
 	
 	// Send NACK
-	
+	//    thu hoi lai chan SDA = 0 -> chan SDA thanh chan output, 
+    //    MCU se dieu khien chan SDA.
 	TRIS_SDA = 0;
 	
 	if (ack)
