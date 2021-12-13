@@ -29,6 +29,10 @@ void main(void)
 	{
             while (!flag_timer3);
             flag_timer3 = 0;
+//            uncomment 2 dong nay de su dung simulator
+//            k = (k + 1) % 20;
+//            if (k == 0) clock_run();
+            
             // thuc hien cac cong viec duoi day
             scan_key_matrix();
             App_PasswordDoor();
@@ -61,7 +65,11 @@ void init_system(void)
         init_key_matrix();
 //        disable_uart();
 //        init_adc();
-        init_i2c();
+        
+        init_i2c();     // disable this if you simulator:
+        
+
+        
 }
 
 void OpenOutput(int index)

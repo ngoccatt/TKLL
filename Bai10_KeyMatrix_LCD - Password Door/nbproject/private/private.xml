@@ -4,13 +4,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/timer/timer.h</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/password_door/password_door.c</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/interrupt/interrupt.h</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/timer/timer.c</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/uart/uart.c</file>
-            <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/clock/clock.h</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/main.c</file>
+            <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/uart/uart.h</file>
+            <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/i2c/i2c.h</file>
+            <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/clock/clock.h</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/main.h</file>
+            <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/lcd/lcd.h</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/clock/clock.c</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/button_matrix/button.h</file>
             <file>file:/D:/GitHub/TKLL/TKLL/Bai10_KeyMatrix_LCD%20-%20Password%20Door/password_door/password_door.h</file>

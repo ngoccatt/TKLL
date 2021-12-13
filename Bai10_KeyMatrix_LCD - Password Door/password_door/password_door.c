@@ -3,7 +3,8 @@
 #include "..\i2c\i2c.h"
 #include "..\lcd\lcd.h"
 #include "..\button_matrix\button.h"
-#include "..\clock\clock.h"
+#include "..\clock\clock.h"         //comment this if you simulator
+//#include "..\clock\simu_clock.h"        //use this for simulator
 #include <stdlib.h>
 
 //get current time

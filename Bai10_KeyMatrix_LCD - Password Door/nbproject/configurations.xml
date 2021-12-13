@@ -14,6 +14,7 @@
       <itemPath>adc/adc.h</itemPath>
       <itemPath>password_door/password_door.h</itemPath>
       <itemPath>clock/clock.h</itemPath>
+      <itemPath>clock/simu_clock.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -32,6 +33,7 @@
       <itemPath>uart/uart.c</itemPath>
       <itemPath>clock/clock.c</itemPath>
       <itemPath>password_door/password_door.c</itemPath>
+      <itemPath>clock/simu_clock.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -216,6 +218,10 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>
       </PICkit3PlatformTool>
+      <item path="clock/simu_clock.c" ex="true" overriding="false">
+      </item>
+      <item path="clock/simu_clock.h" ex="true" overriding="false">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>
