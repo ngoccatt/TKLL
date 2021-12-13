@@ -30,6 +30,9 @@
 #define     WAIT_DOOR               24
 #define     CHANGE_TIME             25
 #define     CHANGE_LATE_TIME        26
+#define     LIST_PRESENCE           27
+#define     LIST_LATE               28
+#define     LIST_ABSENT             29
 
 //Chuong trinh Password Door
 #define PASSWORD_LENGTH 6
@@ -37,7 +40,7 @@
 #define ERROR_RETURN    0xffff
 #define CHAR_ERROR_RETURN 0xf
 #define MAX_ID_LENGTH   3
-#define ADMIN_NUM_OF_PAGES     4
+#define ADMIN_NUM_OF_PAGES     5
 #define MANAGE_NUM_OF_PAGES     2
 
 //function prototype

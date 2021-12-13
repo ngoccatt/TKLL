@@ -4,6 +4,7 @@
 #include "..\lcd\lcd.h"
 #include "..\button_matrix\button.h"
 #include "..\clock\clock.h"
+#include <stdlib.h>
 
 //get current time
 unsigned char current_hour = 0;
@@ -74,8 +75,9 @@ unsigned int timeDelay = 0;
 unsigned char admin_page[ADMIN_NUM_OF_PAGES][2] = {
     {UNLOCK_DOOR, ADMIN_CHANGE_PASS},
     {ADMIN_MEMBER_MANAGER, ADMIN_LOG},
-    {RESET_CHECKIN, CHANGE_TIME}, 
-    {CHANGE_LATE_TIME, ADMIN_DASHBOARD}
+    {LIST_PRESENCE, LIST_LATE},
+    {LIST_ABSENT, RESET_CHECKIN}, 
+    {CHANGE_TIME, CHANGE_LATE_TIME}
 };
 unsigned char ad_current_page = 0;
 
@@ -98,7 +100,13 @@ unsigned char ad_current_member = 0;
 //Variable use for user section:
 unsigned char user_page[2] = {UNLOCK_DOOR, USER_CHANGE_PASS};
 
-//function prototype
+
+//get member presence status: HIEN_DIEN, TRE or VANG?
+int list_member_presence_status[8];
+unsigned int index_list_of_presence = 0;
+unsigned int index_list_of_late = 0;
+unsigned int index_list_of_absent = 0;
+
 //function prototype
 unsigned int CheckID(unsigned int id);
 void App_PasswordDoor();
@@ -113,6 +121,67 @@ void DoorStop();
 unsigned char isButtonNumber();
 unsigned char isButtonEnter();
 unsigned char isButtonBack();
+void get_list_member_presence_status(enum Check_in check, unsigned int *page);
+void display_list_member_presence_status();
+
+
+void get_list_member_presence_status(enum Check_in check, unsigned int *page) {
+    int i = 0;
+    int count_mem = 0;
+    int array_index = 0;
+    for(i = 0; i < 8; i++) {
+        list_member_presence_status[i] = -1;
+    }
+    
+    for(i = 0; i < num_of_user; i++) {
+        if (account[i].checkin == check) {
+            count_mem++;
+            if (count_mem > ((*page) * 8)) {
+                list_member_presence_status[array_index] = account[i].ID;
+                array_index++;
+                if (array_index >= 8) return;
+            }
+        }  
+    }
+         
+    if ((*page) > 0 && count_mem <= ((*page) * 8)) {
+        (*page) = 0;
+        array_index = 0;
+        count_mem = 0;
+        for(i = 0; i < num_of_user; i++) {
+        if (account[i].checkin == check) {
+            count_mem++;
+            if (count_mem > ((*page) * 8)) {
+                list_member_presence_status[array_index] = account[i].ID;
+                array_index++;
+                if (array_index >= 8) return;
+                }
+            } 
+        }
+    }  
+}
+
+void display_list_member_presence_status() {
+    int i = 0;
+    LcdClearS();
+    for (i = 0; i < 8; i++) {
+        if (i < 4) {
+            if (list_member_presence_status[i] == -1) {
+                LcdPrintStringS(0, i * 4, "    ");
+            } else 
+            {
+                LcdPrintNumS(0, i * 4, list_member_presence_status[i]);
+            }
+        } else {
+            if (list_member_presence_status[i] == -1) {
+                LcdPrintStringS(1, (i - 4) * 4, "    ");
+            } else 
+            {
+                LcdPrintNumS(1, (i - 4) * 4, list_member_presence_status[i]);
+            }
+        }
+    }
+}
 
 
 unsigned int CheckID(unsigned int id) {
@@ -402,12 +471,16 @@ void App_PasswordDoor()
                     LcdPrintLineS(1, "2.CREATE LOG");
                     break;
                 case 2:
-                    LcdPrintLineS(0, "1.CLEAR CHECK IN");
-                    LcdPrintLineS(1, "2.CHANGE TIME");
+                    LcdPrintLineS(0, "1.LIST PRESENCE");
+                    LcdPrintLineS(1, "2.LIST LATE");
                     break;
                 case 3:
-                    LcdPrintLineS(0, "1.CHANGE L.TIME");
-                    LcdPrintLineS(1, "");
+                    LcdPrintLineS(0, "1.LIST ABSENT");
+                    LcdPrintLineS(1, "2.CLEAR CHECK IN");
+                    break;
+                case 4:
+                    LcdPrintLineS(0, "1.CHANGE TIME");
+                    LcdPrintLineS(1, "2.CHANGE L.TIME");
                     break;
                 default:
                     break;
@@ -872,6 +945,69 @@ void App_PasswordDoor()
                 statusPassword = WAIT_DOOR;
                 reset_package();
 //                disable_uart();
+            }
+            break;
+        case LIST_PRESENCE:
+            timeDelay++;
+            if (timeDelay == 1) {
+                get_list_member_presence_status(HIEN_DIEN, &index_list_of_presence);
+                display_list_member_presence_status();
+            }
+            if (isButtonEnter()) {
+                index_list_of_presence++;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                statusPassword = ADMIN_DASHBOARD;
+                reset_package();
+                index_list_of_presence = 0;
+            }
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                reset_package();
+                index_list_of_presence = 0;
+            }
+            break;
+        case LIST_LATE:
+            timeDelay++;
+            if (timeDelay == 1) {
+                get_list_member_presence_status(TRE, &index_list_of_late);
+                display_list_member_presence_status();
+            }
+            if (isButtonEnter()) {
+                index_list_of_late++;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                statusPassword = ADMIN_DASHBOARD;
+                reset_package();
+                index_list_of_late = 0;
+            }
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                reset_package();
+                index_list_of_late = 0;
+            }
+            break;
+        case LIST_ABSENT:
+            timeDelay++;
+            if (timeDelay == 1) {
+                get_list_member_presence_status(VANG, &index_list_of_absent);
+                display_list_member_presence_status();
+            }
+            if (isButtonEnter()) {
+                index_list_of_absent++;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                statusPassword = ADMIN_DASHBOARD;
+                reset_package();
+                index_list_of_absent = 0;
+            }
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                reset_package();
+                index_list_of_absent = 0;
             }
             break;
         case WAIT_DOOR:
