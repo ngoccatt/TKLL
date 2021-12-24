@@ -39,7 +39,7 @@
 
 //Chuong trinh Password Door
 #define PASSWORD_LENGTH         6
-#define MAX_ACCOUNT             20
+#define MAX_ACCOUNT             100
 #define ERROR_RETURN            0xffff
 #define CHAR_ERROR_RETURN       0xf
 #define MAX_ID_LENGTH           3

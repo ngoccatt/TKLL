@@ -35,12 +35,21 @@ typedef struct user_account {
     enum Check_in checkin;
 } user_account;
 
-user_account account[MAX_ACCOUNT] = {
+//De su dung 1 data lon (100 phan tu account) nhu vay, can phai chinh sua file linker. Vao duong dan sau:
+//C:\Program Files (x86)\Microchip\mplabc18\v3.47\bin\LKR\18f4620_g.lkr. copy file do dua vao project
+//import file do vao Linker Files
+//thay doi file (cho large_data). File da duoc chinh sua de gop 5 bank tu 0 toi 5 tao thanh 1 bank 1400 bytes.
+//xem them tai link sau: http://www.xargs.com/pic/c18large.html, https://www.hobbytronics.co.uk/c18-large-data-arrays
+#pragma idata large_idata
+user_account accounts[MAX_ACCOUNT] = {
     {0, {1,2,3,4,5,6}, VANG},
     {1, {2,7,8,9,7,8}, VANG},
     {2, {3,3,3,3,3,3}, VANG},
     {3, {4,8,6,8,2,1}, VANG}
 };
+#pragma idata
+//doi voi object lon, phai dung con tro de dieu khien.
+user_account * account = accounts;
 
 //an array hold input password
 unsigned char arrayPassword[PASSWORD_LENGTH];
@@ -1150,9 +1159,15 @@ void App_PasswordDoor()
                 timeDelay = 0;
             }
             if (isButtonBack()) {
-                statusPassword = CHECK_IN;
-                reset_smol_package();
-                index_list_of_absent = 0;
+                if (index_list_of_absent <= 0) {
+                    statusPassword = CHECK_IN;
+                    index_list_of_absent = 0;
+                    reset_smol_package();
+                }
+                else {
+                    index_list_of_absent--;
+                    timeDelay = 0;
+                } 
             }
             if (timeDelay > 300) {
                 statusPassword = INIT_SYSTEM;
