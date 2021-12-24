@@ -65,29 +65,29 @@ void DisplayRealTime()
 
     if(hour < 10)
     {
-        LcdPrintStringS(1,7,"0");
-        LcdPrintNumS(1,8,hour);
+        LcdPrintStringS(0,4,"0");
+        LcdPrintNumS(0,5,hour);
     }
     else
-        LcdPrintNumS(1,7,hour);
+        LcdPrintNumS(0,4,hour);
     
-    LcdPrintStringS(1,9,":");
+    LcdPrintStringS(0,6,":");
     if(minute < 10)
     {
-        LcdPrintStringS(1,10,"0");
-        LcdPrintNumS(1,11,minute);
+        LcdPrintStringS(0,7,"0");
+        LcdPrintNumS(0,8,minute);
     }
     else
-        LcdPrintNumS(1,10,minute);
+        LcdPrintNumS(0,7,minute);
 
-    LcdPrintStringS(1,12,":");
+    LcdPrintStringS(0,9,":");
     if(second < 10)
     {
-        LcdPrintStringS(1,13,"0");
-        LcdPrintNumS(1,14,second);
+        LcdPrintStringS(0,10,"0");
+        LcdPrintNumS(0,11,second);
     }
     else
-        LcdPrintNumS(1,13,second);
+        LcdPrintNumS(0,10,second);
     
 }
 
@@ -101,29 +101,29 @@ void DisplayTempTime(unsigned char hour, unsigned char minute, unsigned char sec
 
     if(hour < 10)
     {
-        LcdPrintStringS(1,7,"0");
-        LcdPrintNumS(1,8,hour);
+        LcdPrintStringS(0,4,"0");
+        LcdPrintNumS(0,5,hour);
     }
     else
-        LcdPrintNumS(1,7,hour);
+        LcdPrintNumS(0,4,hour);
     
-    LcdPrintStringS(1,9,":");
+    LcdPrintStringS(0,6,":");
     if(minute < 10)
     {
-        LcdPrintStringS(1,10,"0");
-        LcdPrintNumS(1,11,minute);
+        LcdPrintStringS(0,7,"0");
+        LcdPrintNumS(0,8,minute);
     }
     else
-        LcdPrintNumS(1,10,minute);
+        LcdPrintNumS(0,7,minute);
 
-    LcdPrintStringS(1,12,":");
+    LcdPrintStringS(0,9,":");
     if(second < 10)
     {
-        LcdPrintStringS(1,13,"0");
-        LcdPrintNumS(1,14,second);
+        LcdPrintStringS(0,10,"0");
+        LcdPrintNumS(0,11,second);
     }
     else
-        LcdPrintNumS(1,13,second);
+        LcdPrintNumS(0,10,second);
     
 }
 
@@ -131,7 +131,7 @@ void smolClock() {
     
     switch (clockState) {
         case INIT_CLOCK:
-                LcdPrintLineS(0,"CHANGE TIME");
+                LcdPrintLineS(1,"1.UP 2.DN 3.MODE");
                 DisplayRealTime();
                 if (isButtonMode()) {
                     clockState = GET_TIME;
@@ -148,7 +148,7 @@ void smolClock() {
                 DisplayTempTime(temp_hour, temp_minute, temp_second);
                 if (key_code[0] == 0 && key_code[1] == 0) {
                     if (blinking < 10) {
-                         LcdPrintStringS(1,7,"  ");
+                         LcdPrintStringS(0,4,"  ");
                     }
                 }
                 if (isButtonIncrease()) {
@@ -166,8 +166,8 @@ void smolClock() {
                
                 DisplayTempTime(temp_hour, temp_minute, temp_second);
                 if (key_code[0] == 0 && key_code[1] == 0) {
-                    if (blinking < 10) {
-                         LcdPrintStringS(1,10,"  ");
+                   if (blinking < 10) {
+                         LcdPrintStringS(0,7,"  ");
                     }
                 }
                 if (isButtonIncrease()) {
@@ -185,8 +185,8 @@ void smolClock() {
                 
                 DisplayTempTime(temp_hour, temp_minute, temp_second);
                 if (key_code[0] == 0 && key_code[1] == 0) {
-                    if (blinking < 10) {
-                         LcdPrintStringS(1,13,"  ");
+                   if (blinking < 10) {
+                         LcdPrintStringS(0,10,"  ");
                     }
                 }
                 if (isButtonIncrease()) {
@@ -217,7 +217,7 @@ void smolClock() {
 void smolLateClock() {
     switch (clockState) {
         case INIT_CLOCK:
-            LcdPrintLineS(0,"CHANGE LATE TIME");
+            LcdPrintLineS(1,"1.UP 2.DN 3.MODE");
             DisplayTempTime(late_hour, late_minute, late_second);
             if (isButtonMode()) {
                 clockState = CHANGE_HOUR;
@@ -228,8 +228,8 @@ void smolLateClock() {
             
             DisplayTempTime(late_hour, late_minute, late_second);
             if (key_code[0] == 0 && key_code[1] == 0) {
-                if (blinking < 10) {
-                     LcdPrintStringS(1,7,"  ");
+               if (blinking < 10) {
+                     LcdPrintStringS(0,4,"  ");
                 }
             }
             if (isButtonIncrease()) {
@@ -250,7 +250,7 @@ void smolLateClock() {
             DisplayTempTime(late_hour, late_minute, late_second);
             if (key_code[0] == 0 && key_code[1] == 0) {
                 if (blinking < 10) {
-                     LcdPrintStringS(1,10,"  ");
+                     LcdPrintStringS(0,7,"  ");
                 }
             }
             if (isButtonIncrease()) {
@@ -270,8 +270,8 @@ void smolLateClock() {
             
             DisplayTempTime(late_hour, late_minute, late_second);
             if (key_code[0] == 0 && key_code[1] == 0) {
-                if (blinking < 10) {
-                     LcdPrintStringS(1,13,"  ");
+                 if (blinking < 10) {
+                     LcdPrintStringS(0,10,"  ");
                 }
             }
             if (isButtonIncrease()) {
