@@ -63,6 +63,7 @@
 #define LEFT_ARROW      0b00000000      //0x00 (hoac 0x08)  dia chi ki tu trong CGROM
 #define RIGHT_ARROW     0b00000001      //0x01 (hoac 0x09)  dia chi ki tu trong CGROM
 #define CENTER_NODE     0b00000010      //0x02 (hoac 0x0a)  dia chi ki tu trong CGROM
+#define LONG_LEFT_ARROW     0b00000011      //0x02 (hoac 0x0a)  dia chi ki tu trong CGROM
 
 void lcd_delay(unsigned long time);
 void setInitCGRAM();
