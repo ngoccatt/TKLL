@@ -35,6 +35,7 @@
 #define     LIST_ABSENT             29
 #define     CHECK_IN                30
 #define     TIME                    31
+#define     CLOSING_DOOR            32
 
 //Chuong trinh Password Door
 #define PASSWORD_LENGTH         6

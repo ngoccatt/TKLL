@@ -354,8 +354,9 @@ void App_PasswordDoor()
             LcdPrintStringS(1,0,"PRESS # FOR PASS");
             LcdPrintStringS(0,0,"                ");
             DisplayRealTime();
+            DoorStop();
 //            LockDoor();
-            UnlockDoor();
+//            UnlockDoor();
             doorState = CLOSED;
             if (isButtonNext())
             {
@@ -1320,11 +1321,18 @@ void App_PasswordDoor()
             }
             
             if (timeDelay >= 100) {
-                statusPassword = INIT_SYSTEM;
-                
+                statusPassword = CLOSING_DOOR;
+                reset_smol_package();
             }
             break;
-
+        case CLOSING_DOOR:
+            timeDelay++;
+            LcdPrintLineS(0,"DOOR CLOSING");
+            LockDoor();
+            if (timeDelay >= 40) {
+                statusPassword = INIT_SYSTEM;
+            }
+            break;
         case WRONG_PASSWORD:
             timeDelay++;
             LcdPrintStringS(0,0,"PASSWORD WRONG  ");
