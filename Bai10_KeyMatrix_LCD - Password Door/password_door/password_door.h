@@ -3,14 +3,14 @@
 
 
 
-#define     INIT_SYSTEM        0
-#define     ENTER_PASSWORD     1
-#define     CHECK_PASSWORD     2
-#define     UNLOCK_DOOR        3
-#define     WRONG_PASSWORD     4
-#define     ENTER_ID           5
-#define     CHECK_ID           6
-#define     INVALID_ID         7
+#define     INIT_SYSTEM             0
+#define     ENTER_PASSWORD          1
+#define     CHECK_PASSWORD          2
+#define     UNLOCK_DOOR             3
+#define     WRONG_PASSWORD          4
+#define     ENTER_ID                5
+#define     CHECK_ID                6
+#define     INVALID_ID              7
 #define     ADMIN_DASHBOARD         8
 #define     ADMIN_CHANGE_PASS       9
 #define     ADMIN_MEMBER_MANAGER    10
@@ -33,15 +33,20 @@
 #define     LIST_PRESENCE           27
 #define     LIST_LATE               28
 #define     LIST_ABSENT             29
+#define     CHECK_IN                30
+#define     TIME                    31
 
 //Chuong trinh Password Door
-#define PASSWORD_LENGTH 6
-#define MAX_ACCOUNT     10
-#define ERROR_RETURN    0xffff
-#define CHAR_ERROR_RETURN 0xf
-#define MAX_ID_LENGTH   3
-#define ADMIN_NUM_OF_PAGES     5
-#define MANAGE_NUM_OF_PAGES     2
+#define PASSWORD_LENGTH         6
+#define MAX_ACCOUNT             10
+#define ERROR_RETURN            0xffff
+#define CHAR_ERROR_RETURN       0xf
+#define MAX_ID_LENGTH           3
+#define ADMIN_NUM_OF_PAGES      5
+#define MANAGE_NUM_OF_PAGES     3   
+#define CHECKIN_NUM_OF_PAGES    5
+#define TIME_NUM_OF_PAGES       2
+#define USER_NUM_OF_PAGES       2
 
 //function prototype
 unsigned int CheckID(unsigned int id);

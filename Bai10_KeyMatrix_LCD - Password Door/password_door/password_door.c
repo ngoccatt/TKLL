@@ -3,8 +3,8 @@
 #include "..\i2c\i2c.h"
 #include "..\lcd\lcd.h"
 #include "..\button_matrix\button.h"
-#include "..\clock\clock.h"         //comment this if you simulator
-//#include "..\clock\simu_clock.h"        //use this for simulator
+//#include "..\clock\clock.h"         //comment this if you simulator
+#include "..\clock\simu_clock.h"        //use this for simulator
 #include <stdlib.h>
 
 //get current time
@@ -73,21 +73,41 @@ unsigned int timeDelay = 0;
 //Variable use for admin section:
 
 //admin page
-unsigned char admin_page[ADMIN_NUM_OF_PAGES][2] = {
-    {UNLOCK_DOOR, ADMIN_CHANGE_PASS},
-    {ADMIN_MEMBER_MANAGER, ADMIN_LOG},
-    {LIST_PRESENCE, LIST_LATE},
-    {LIST_ABSENT, RESET_CHECKIN}, 
-    {CHANGE_TIME, CHANGE_LATE_TIME}
+unsigned char admin_page[ADMIN_NUM_OF_PAGES] = {
+    UNLOCK_DOOR, 
+    ADMIN_CHANGE_PASS,
+    ADMIN_MEMBER_MANAGER, 
+    CHECK_IN,
+    TIME,
 };
 unsigned char ad_current_page = 0;
 
 //manage member page
-unsigned char manage_page[MANAGE_NUM_OF_PAGES][2] = {
-    {ADMIN_ADD_MEMBER, ADMIN_REMOVE_MEMBER},
-    {ADMIN_CHANGE_MEMBER, ADMIN_MEMBER_MANAGER}
+unsigned char manage_page[MANAGE_NUM_OF_PAGES] = {
+    ADMIN_ADD_MEMBER,
+    ADMIN_REMOVE_MEMBER,
+    ADMIN_CHANGE_MEMBER, 
 };
 unsigned char ad_mem_cur_page = 0;
+
+//checkin page
+unsigned char checkin_page[CHECKIN_NUM_OF_PAGES] = {
+    ADMIN_LOG,
+    LIST_PRESENCE,
+    LIST_LATE,
+    LIST_ABSENT,
+    RESET_CHECKIN
+};
+unsigned char checkin_cur_page = 0;
+
+//time page
+unsigned char time_page[TIME_NUM_OF_PAGES] = {
+    CHANGE_TIME,
+    CHANGE_LATE_TIME
+};
+unsigned char time_cur_page = 0;
+
+
 
 //how many lists needed to show all the user (member)
 unsigned char ad_num_member_list = 0;
@@ -99,8 +119,11 @@ unsigned char ad_cur_mem_list = 0;
 unsigned char ad_current_member = 0;
 
 //Variable use for user section:
-unsigned char user_page[2] = {UNLOCK_DOOR, USER_CHANGE_PASS};
-
+unsigned char user_page[USER_NUM_OF_PAGES] = {
+    UNLOCK_DOOR, 
+    USER_CHANGE_PASS
+};
+unsigned char user_cur_page = 0;
 
 //get member presence status: HIEN_DIEN, TRE or VANG?
 int list_member_presence_status[8];
@@ -225,6 +248,8 @@ void reset_package() {
     ad_cur_mem_list = 0;        //list of member
     ad_current_page = 0;        //list of admin function
     ad_mem_cur_page = 0;        //list of admin member management function
+    checkin_cur_page = 0;
+    time_cur_page = 0;
     indexOfNumber = 0;
     indexOfID = 0;
 }
@@ -405,23 +430,41 @@ void App_PasswordDoor()
             break;
         case USER_DASHBOARD:
             timeDelay++;
-            LcdPrintLineS(0, "1.OPEN DOOR");
-            LcdPrintLineS(1, "2.CHANGE PASS");
+            switch(user_cur_page) {
+                case 0:
+                    LcdPrintLineS(0, "  1.OPEN DOOR  ");
+                    LcdPrintLineS(1, "       @      >");
+                    break;
+                case 1:
+                    LcdPrintLineS(0, "  2.CHANGE PW  ");
+                    LcdPrintLineS(1, "<      @       ");
+                    break;
+                default:
+                    break;
+            } 
             
-            
-            
-            if (isButtonBack()){
-                statusPassword = INIT_SYSTEM;
+            if (isButtonEnter()) {
+//                user_cur_page = (user_cur_page + 1) % USER_NUM_OF_PAGES;
+                user_cur_page++;
+                if (user_cur_page >= USER_NUM_OF_PAGES) 
+                    user_cur_page = USER_NUM_OF_PAGES - 1;
+                timeDelay = 0;
             }
-            if (key_code[0] == 1) {
-                statusPassword = user_page[0];
+            if (isButtonBack()) {
+//                  statusPassword = INIT_SYSTEM;
+                if (user_cur_page <= 0) {
+                    statusPassword = INIT_SYSTEM;
+                }
+                else {
+                    user_cur_page--;
+                    if (user_cur_page < 0) user_cur_page = 0;
+                    timeDelay = 0;
+                }
+            }
+            if (key_code[13] == 1) {
+                statusPassword = user_page[user_cur_page];
                 reset_package();
             }
-            if (key_code[1] == 1) {
-                statusPassword = user_page[1];
-                reset_package();
-            }
-            
             if (isButtonNumber()) timeDelay = 0;
             
             if (timeDelay > 300) {      
@@ -464,44 +507,55 @@ void App_PasswordDoor()
             timeDelay++;
             switch(ad_current_page) {
                 case 0:
-                    LcdPrintLineS(0, "1.OPEN DOOR");
-                    LcdPrintLineS(1, "2.CHANGE PASS");
+                    LcdPrintLineS(0, "  1.OPEN DOOR  ");
+                    LcdPrintLineS(1, "       @      >");
                     break;
                 case 1:
-                    LcdPrintLineS(0, "1.MANAGE USER");
-                    LcdPrintLineS(1, "2.CREATE LOG");
+                    LcdPrintLineS(0, "  2.CHANGE PW  ");
+                    LcdPrintLineS(1, "<      @      >");
                     break;
                 case 2:
-                    LcdPrintLineS(0, "1.LIST PRESENCE");
-                    LcdPrintLineS(1, "2.LIST LATE");
+                    LcdPrintLineS(0, " 3.MANAGE USER ");
+                    LcdPrintLineS(1, "<      @      >");
                     break;
                 case 3:
-                    LcdPrintLineS(0, "1.LIST ABSENT");
-                    LcdPrintLineS(1, "2.CLEAR CHECK IN");
+                    LcdPrintLineS(0, "  4.CHECK IN   ");
+                    LcdPrintLineS(1, "<      @      >");
                     break;
                 case 4:
-                    LcdPrintLineS(0, "1.CHANGE TIME");
-                    LcdPrintLineS(1, "2.CHANGE L.TIME");
+                    LcdPrintLineS(0, "    5.TIME     ");
+                    LcdPrintLineS(1, "<      @       ");
                     break;
                 default:
                     break;
             } 
             
             if (isButtonEnter()) {
-                ad_current_page = (ad_current_page + 1) % ADMIN_NUM_OF_PAGES;
+//                ad_current_page = (ad_current_page + 1) % ADMIN_NUM_OF_PAGES;
+                ad_current_page++;
+                if (ad_current_page >= ADMIN_NUM_OF_PAGES) 
+                    ad_current_page = ADMIN_NUM_OF_PAGES - 1;
                 timeDelay = 0;
             }
             if (isButtonBack()) {
-               statusPassword = INIT_SYSTEM;
+                if (ad_current_page <= 0) {
+                    statusPassword = INIT_SYSTEM;
+                }
+                else {
+//                  ad_current_page = (ad_current_page - 1) % ADMIN_NUM_OF_PAGES;
+                    ad_current_page--;
+//                    if (ad_current_page < 0) ad_current_page = 0;
+                    timeDelay = 0;
+                }
             }
-            if (key_code[0] == 1) {
-                statusPassword = admin_page[ad_current_page][0];
+            if (key_code[13] == 1) {
+                statusPassword = admin_page[ad_current_page];
                 reset_package();
             }
-            if (key_code[1] == 1) {
-                statusPassword = admin_page[ad_current_page][1];
-                reset_package();
-            }
+//            if (key_code[1] == 1) {
+//                statusPassword = admin_page[ad_current_page][1];
+//                reset_package();
+//            }
             
             if (isButtonNumber()) timeDelay = 0;
             
@@ -555,37 +609,50 @@ void App_PasswordDoor()
             timeDelay++;
             switch(ad_mem_cur_page) {
                 case 0:
-                    LcdPrintLineS(0, "1.ADD MEMBER");
-                    LcdPrintLineS(1, "2.REMOVE MEMBER");
+                    LcdPrintLineS(0, " 1.ADD MEMBER  ");
+                    LcdPrintLineS(1, "       @      >");
                     break;
                 case 1:
-                    LcdPrintLineS(0, "1.CHANGE MEM PW");
-                    LcdPrintLineS(1, " ");
+                    LcdPrintLineS(0, "2.REMOVE MEMBER");
+                    LcdPrintLineS(1, "<      @      >");
+                    break;
+                case 2:
+                    LcdPrintLineS(0, "3.CHANGE MEM PW");
+                    LcdPrintLineS(1, "<      @       ");
                     break;
                 default:
                     break;
             } 
             
             if (isButtonEnter()) {
-                ad_mem_cur_page = (ad_mem_cur_page + 1) % MANAGE_NUM_OF_PAGES;
+//                ad_mem_cur_page = (ad_mem_cur_page + 1) % MANAGE_NUM_OF_PAGES;
+                ad_mem_cur_page++;
+                if (ad_mem_cur_page >= MANAGE_NUM_OF_PAGES)
+                    ad_mem_cur_page = MANAGE_NUM_OF_PAGES - 1;
                 timeDelay = 0;
             }
             if (isButtonBack()) {
-                statusPassword = ADMIN_DASHBOARD;
-                reset_package();
+                if (ad_mem_cur_page <= 0) {
+                    statusPassword = ADMIN_DASHBOARD;
+                    reset_package();
+                }
+                else {
+                    ad_mem_cur_page--;
+                    timeDelay = 0;
+                }
             }
-            if (key_code[0] == 1) {
-                statusPassword = manage_page[ad_mem_cur_page][0];
+            if (key_code[13] == 1) {
+                statusPassword = manage_page[ad_mem_cur_page];
                 reset_package();       
                 //cap nhat lai so trang cua member khi vao ham REMOVE_MEMBER hay CHANGE_MEMBER
                 ad_num_member_list = (((num_of_user - 1) % 4 == 0) ? ((num_of_user - 1) / 4) : ((num_of_user - 1) / 4) + 1);
             }
-            if (key_code[1] == 1) {
-                statusPassword = manage_page[ad_mem_cur_page][1];
-                reset_package();  
-                //cap nhat lai so trang cua member khi vao ham REMOVE_MEMBER hay CHANGE_MEMBER
-                ad_num_member_list = (((num_of_user - 1) % 4 == 0) ? ((num_of_user - 1) / 4) : ((num_of_user - 1) / 4) + 1);
-            }
+//            if (key_code[1] == 1) {
+//                statusPassword = manage_page[ad_mem_cur_page][1];
+//                reset_package();  
+//                //cap nhat lai so trang cua member khi vao ham REMOVE_MEMBER hay CHANGE_MEMBER
+//                ad_num_member_list = (((num_of_user - 1) % 4 == 0) ? ((num_of_user - 1) / 4) : ((num_of_user - 1) / 4) + 1);
+//            }
             if (timeDelay > 300) {      
                 statusPassword = ADMIN_DASHBOARD;
             }
@@ -845,6 +912,61 @@ void App_PasswordDoor()
                 reset_package();
             }
             break;
+            
+        //CHECK_IN session
+        case CHECK_IN:
+            timeDelay++;
+            switch(checkin_cur_page) {
+                case 0:
+                    LcdPrintLineS(0, "  1.CREATE LOG ");
+                    LcdPrintLineS(1, "       @      >");
+                    break;
+                case 1:
+                    LcdPrintLineS(0, " 2.PRESENT LIST");
+                    LcdPrintLineS(1, "<      @      >");
+                    break;
+                case 2:
+                    LcdPrintLineS(0, "  3.LATE LIST  ");
+                    LcdPrintLineS(1, "<      @      >");
+                    break;
+                case 3:
+                    LcdPrintLineS(0, " 4.ABSENT LIST ");
+                    LcdPrintLineS(1, "<      @      >");
+                    break;
+                case 4:
+                    LcdPrintLineS(0, "5.CLEAR CHECK IN");
+                    LcdPrintLineS(1, "<      @       ");
+                    break;
+                default:
+                    break;
+            } 
+            
+            if (isButtonEnter()) {
+                checkin_cur_page++;
+                if (checkin_cur_page >= CHECKIN_NUM_OF_PAGES) 
+                    checkin_cur_page = CHECKIN_NUM_OF_PAGES - 1;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                if (checkin_cur_page <= 0) {
+                    statusPassword = ADMIN_DASHBOARD;
+                    reset_package();
+                }
+                else {
+                    checkin_cur_page--;
+                    timeDelay = 0;
+                }
+            }
+            if (key_code[13] == 1) {
+                statusPassword = checkin_page[checkin_cur_page];
+                reset_package();
+            }
+            if (isButtonNumber()) timeDelay = 0;
+            
+            if (timeDelay > 300) {      
+                statusPassword = ADMIN_DASHBOARD;
+            }
+            break;
         case ADMIN_LOG:
             timeDelay++;
             if (timeDelay == 1) {
@@ -858,11 +980,128 @@ void App_PasswordDoor()
             LcdPrintStringS(1,8 ,"V     ");
             LcdPrintNumS(1,12, vang);
             if (isButtonBack()) {
-                statusPassword = ADMIN_DASHBOARD;
+                statusPassword = CHECK_IN;
                 reset_package();
             }
             if (timeDelay > 300) {
                 statusPassword = INIT_SYSTEM;
+            }
+            break;
+        case LIST_PRESENCE:
+            timeDelay++;
+            if (timeDelay == 1) {
+                get_list_member_presence_status(HIEN_DIEN, &index_list_of_presence);
+                display_list_member_presence_status();
+            }
+            if (isButtonEnter()) {
+                index_list_of_presence++;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                statusPassword = CHECK_IN;
+                reset_package();
+                index_list_of_presence = 0;
+            }
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                reset_package();
+                index_list_of_presence = 0;
+            }
+            break;
+        case LIST_LATE:
+            timeDelay++;
+            if (timeDelay == 1) {
+                get_list_member_presence_status(TRE, &index_list_of_late);
+                display_list_member_presence_status();
+            }
+            if (isButtonEnter()) {
+                index_list_of_late++;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                statusPassword = CHECK_IN;
+                reset_package();
+                index_list_of_late = 0;
+            }
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                reset_package();
+                index_list_of_late = 0;
+            }
+            break;
+        case LIST_ABSENT:
+            timeDelay++;
+            if (timeDelay == 1) {
+                get_list_member_presence_status(VANG, &index_list_of_absent);
+                display_list_member_presence_status();
+            }
+            if (isButtonEnter()) {
+                index_list_of_absent++;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                statusPassword = CHECK_IN;
+                reset_package();
+                index_list_of_absent = 0;
+            }
+            if (timeDelay > 300) {
+                statusPassword = INIT_SYSTEM;
+                reset_package();
+                index_list_of_absent = 0;
+            }
+            break;
+        case RESET_CHECKIN:
+            timeDelay++;
+            LcdPrintLineS(0,"CLEAR CHECK IN");
+            if (timeDelay == 1) {
+                resetCheckin();
+            }
+            if (timeDelay >= 40) {
+                statusPassword = CHECK_IN;
+                reset_package();
+            }
+            break;
+            
+        //TIME session
+        case TIME:
+            timeDelay++;
+            switch(time_cur_page) {
+                case 0:
+                    LcdPrintLineS(0, " 1.CHANGE TIME ");
+                    LcdPrintLineS(1, "       @      >");
+                    break;
+                case 1:
+                    LcdPrintLineS(0, "2.CHANGE L.TIME");
+                    LcdPrintLineS(1, "<      @       ");
+                    break;
+                default:
+                    break;
+            } 
+            
+            if (isButtonEnter()) {
+                time_cur_page++;
+                if (time_cur_page >= TIME_NUM_OF_PAGES) 
+                    time_cur_page = TIME_NUM_OF_PAGES - 1;
+                timeDelay = 0;
+            }
+            if (isButtonBack()) {
+                if (time_cur_page <= 0) {
+                    statusPassword = ADMIN_DASHBOARD;
+                    reset_package();
+                }
+                else {
+                    time_cur_page--;
+                    timeDelay = 0;
+                }
+            }
+            if (key_code[13] == 1) {
+                statusPassword = time_page[time_cur_page];
+                reset_package();
+            }
+            if (isButtonNumber()) timeDelay = 0;
+            
+            if (timeDelay > 300) {      
+                statusPassword = ADMIN_DASHBOARD;
             }
             break;
         case CHANGE_TIME:
@@ -871,7 +1110,7 @@ void App_PasswordDoor()
             if (isButtonNumber()) timeDelay = 0;
             
             if (isButtonBack()) {
-                statusPassword = ADMIN_DASHBOARD;
+                statusPassword = TIME;
                 clockState = INIT_CLOCK;
             }
             
@@ -886,7 +1125,7 @@ void App_PasswordDoor()
             if (isButtonNumber()) timeDelay = 0;
             
             if (isButtonBack()) {
-                statusPassword = ADMIN_DASHBOARD;
+                statusPassword = TIME;
                 clockState = INIT_CLOCK;
             }
             
@@ -895,6 +1134,7 @@ void App_PasswordDoor()
                 clockState = INIT_CLOCK;
             }
             break;
+            
         case UNLOCK_DOOR:
             
             timeDelay++;
@@ -948,69 +1188,7 @@ void App_PasswordDoor()
 //                disable_uart();
             }
             break;
-        case LIST_PRESENCE:
-            timeDelay++;
-            if (timeDelay == 1) {
-                get_list_member_presence_status(HIEN_DIEN, &index_list_of_presence);
-                display_list_member_presence_status();
-            }
-            if (isButtonEnter()) {
-                index_list_of_presence++;
-                timeDelay = 0;
-            }
-            if (isButtonBack()) {
-                statusPassword = ADMIN_DASHBOARD;
-                reset_package();
-                index_list_of_presence = 0;
-            }
-            if (timeDelay > 300) {
-                statusPassword = INIT_SYSTEM;
-                reset_package();
-                index_list_of_presence = 0;
-            }
-            break;
-        case LIST_LATE:
-            timeDelay++;
-            if (timeDelay == 1) {
-                get_list_member_presence_status(TRE, &index_list_of_late);
-                display_list_member_presence_status();
-            }
-            if (isButtonEnter()) {
-                index_list_of_late++;
-                timeDelay = 0;
-            }
-            if (isButtonBack()) {
-                statusPassword = ADMIN_DASHBOARD;
-                reset_package();
-                index_list_of_late = 0;
-            }
-            if (timeDelay > 300) {
-                statusPassword = INIT_SYSTEM;
-                reset_package();
-                index_list_of_late = 0;
-            }
-            break;
-        case LIST_ABSENT:
-            timeDelay++;
-            if (timeDelay == 1) {
-                get_list_member_presence_status(VANG, &index_list_of_absent);
-                display_list_member_presence_status();
-            }
-            if (isButtonEnter()) {
-                index_list_of_absent++;
-                timeDelay = 0;
-            }
-            if (isButtonBack()) {
-                statusPassword = ADMIN_DASHBOARD;
-                reset_package();
-                index_list_of_absent = 0;
-            }
-            if (timeDelay > 300) {
-                statusPassword = INIT_SYSTEM;
-                reset_package();
-                index_list_of_absent = 0;
-            }
-            break;
+
         case WAIT_DOOR:
             timeDelay++;
             LcdPrintLineS(0,"PRESS # TO ENTER ");
@@ -1030,17 +1208,7 @@ void App_PasswordDoor()
                 
             }
             break;
-        case RESET_CHECKIN:
-            timeDelay++;
-            LcdPrintLineS(0,"CLEAR CHECK IN");
-            if (timeDelay == 1) {
-                resetCheckin();
-            }
-            if (timeDelay >= 40) {
-                statusPassword = ADMIN_DASHBOARD;
-                reset_package();
-            }
-            break;
+
         case WRONG_PASSWORD:
             timeDelay++;
             LcdPrintStringS(0,0,"PASSWORD WRONG  ");
