@@ -14,7 +14,7 @@ unsigned char temp_hour = 0;
 unsigned char temp_minute = 0;
 unsigned char temp_second = 0;
 
-unsigned char late_hour = 0;
+unsigned char late_hour = 7;
 unsigned char late_minute = 0;
 unsigned char late_second = 0;
 

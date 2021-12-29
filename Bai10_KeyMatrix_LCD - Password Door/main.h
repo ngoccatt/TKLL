@@ -44,6 +44,10 @@
 #pragma config EBTRB            = OFF
 
 
+#define     LED     PORTD
+#define     ON      1
+#define     OFF     0
+
 extern unsigned char arrayMapOfOutput[];
 extern unsigned char statusOutput[];
 

@@ -39,7 +39,7 @@
 
 //Chuong trinh Password Door
 #define PASSWORD_LENGTH         6
-#define MAX_ACCOUNT             100
+#define MAX_ACCOUNT             200
 #define ERROR_RETURN            0xffff
 #define CHAR_ERROR_RETURN       0xf
 #define MAX_ID_LENGTH           3
@@ -48,6 +48,11 @@
 #define CHECKIN_NUM_OF_PAGES    5
 #define TIME_NUM_OF_PAGES       2
 #define USER_NUM_OF_PAGES       2
+
+//Control En of L293D 
+#define SET 1
+#define RESET 0
+#define ENABLE_L293D(x) ((x) ? (PORTD = PORTD | 0b00000100) : (PORTD = PORTD & (0b11111011)))
 
 //function prototype
 unsigned int CheckID(unsigned int id);

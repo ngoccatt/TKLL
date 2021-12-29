@@ -2,9 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 // Noi khai bao hang so
-#define     LED     PORTD
-#define     ON      1
-#define     OFF     0
+
 
 
 // Noi khai bao bien toan cuc
@@ -13,6 +11,12 @@ unsigned char statusOutput[8] = {0,0,0,0,0,0,0,0};
 // Khai bao cac ham co ban IO
 void init_system(void);
 void delay_ms(int value);
+
+void OpenOutput(int index);
+
+void CloseOutput(int index);
+
+void ReverseOutput(int index);
 
 void Test_KeyMatrix();
 
@@ -53,7 +57,7 @@ void init_system(void)
         TRISD = 0x00;       //PORTD is output, too
         init_lcd();
         LcdClearS();
-//        LED = 0x00;
+        LED = 0x00;
         init_interrupt();
         delay_ms(1000);
         init_timer0(4695);//dinh thoi 1ms sai so 1%

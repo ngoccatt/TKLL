@@ -30,13 +30,8 @@ CODEPAGE   NAME=eedata     START=0xF00000          END=0xF003FF       PROTECTED
   ACCESSBANK NAME=accessram  START=0x0               END=0x7F
 #FI
 
-DATABANK   NAME=large_idata       	START=0x80             	END=0x5F8		PROTECTED
-DATABANK   NAME=gpr6       			START=0x5F9             END=0x6FF
-DATABANK   NAME=gpr7       			START=0x700             END=0x7FF
-DATABANK   NAME=gpr8       			START=0x800             END=0x8FF
-DATABANK   NAME=gpr9       			START=0x900             END=0x9FF
-DATABANK   NAME=gpr10      			START=0xA00             END=0xAFF
-DATABANK   NAME=gpr11      			START=0xB00             END=0xBFF
+DATABANK   NAME=large_idata       	START=0x80             	END=0xB70		PROTECTED
+DATABANK   NAME=gpr11      			START=0xB71             END=0xBFF
 DATABANK   NAME=gpr12      			START=0xC00             END=0xCFF
 DATABANK   NAME=gpr13      			START=0xD00             END=0xDFF
 DATABANK   NAME=gpr14      			START=0xE00             END=0xEFF

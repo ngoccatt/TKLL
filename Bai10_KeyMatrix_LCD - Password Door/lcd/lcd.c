@@ -49,10 +49,10 @@ void lcd_sendCommand(unsigned char cmd)	//Sends Command to LCD
 	LCD_PORT&=0x0f;
 	LCD_PORT|=(cmd&0xf0);
     
-	LCD_PORT|=(1 << LCD_E);     //raise RE
+	LCD_PORT|=(1 << LCD_E);     //raise EN
 	v_timer0(1);
 
-	LCD_PORT&=~(1 <<LCD_E);     //low RE
+	LCD_PORT&=~(1 <<LCD_E);     //low EN
 	v_timer0(1);
     //-------------------------------------------
     
@@ -60,10 +60,10 @@ void lcd_sendCommand(unsigned char cmd)	//Sends Command to LCD
 	LCD_PORT&=0x0f;
 	LCD_PORT|=(cmd<<4);
     
-	LCD_PORT|=(1 <<LCD_E);      //raise RE
+	LCD_PORT|=(1 <<LCD_E);      //raise EN
 	v_timer0(1);
 
-	LCD_PORT&=~(1 <<LCD_E);     //low RE
+	LCD_PORT&=~(1 <<LCD_E);     //low EN
 	v_timer0(1);
     
     //--------------------------------------------
@@ -446,6 +446,8 @@ void LcdPrintLineS(unsigned char x, const rom unsigned char *string) {
     }
 }
 
+//cgram_address la 1 gia tri tu 0 toi 7, dai dien cho 8 block (moi block 8 byte) cua CGRAM.
+//dieu nay co nghia la ta co the tao. toi da 8 ki tu custom
 void LcdCreateChar(unsigned char* char_code_arr, unsigned char cgram_address) {
     unsigned int i = 0;
     unsigned int cmd = 0;
