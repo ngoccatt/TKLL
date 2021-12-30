@@ -753,36 +753,45 @@ void App_PasswordDoor()
             break;
         case ADMIN_ADD_MEMBER:
             timeDelay++;
-            LcdPrintStringS(0,0,"PW FOR ID ");
-            LcdPrintNumS(0,10,index_user);
-            if (isButtonNumber())
-            {
-                if (numberValue == 'A') {
-                   if (indexOfNumber > 0) {
-                       indexOfNumber--;
-                       LcdPrintStringS(1,indexOfNumber," ");
-                   }
+            if (num_of_user >= MAX_ACCOUNT) {
+                LcdPrintLineS(0, "MAX ACCOUNT");
+                LcdPrintLineS(1,"REACHED");
+                if (timeDelay > 40) {
+                    statusPassword = ADMIN_DASHBOARD;
+                    reset_package();
                 }
-                else if (numberValue < 10){
-                    if (indexOfNumber < PASSWORD_LENGTH) {
-                        LcdPrintStringS(1,indexOfNumber,"*");
-                        arrayPassword [indexOfNumber] = numberValue;
-                        indexOfNumber++;
+            } else {
+                LcdPrintStringS(0,0,"PW FOR ID ");
+                LcdPrintNumS(0,10,index_user);
+                if (isButtonNumber())
+                {
+                    if (numberValue == 'A') {
+                       if (indexOfNumber > 0) {
+                           indexOfNumber--;
+                           LcdPrintStringS(1,indexOfNumber," ");
+                       }
                     }
+                    else if (numberValue < 10){
+                        if (indexOfNumber < PASSWORD_LENGTH) {
+                            LcdPrintStringS(1,indexOfNumber,"*");
+                            arrayPassword [indexOfNumber] = numberValue;
+                            indexOfNumber++;
+                        }
+                    }
+                    timeDelay = 0;
                 }
-                timeDelay = 0;
-            }
-            if (isButtonNext() && indexOfNumber >= PASSWORD_LENGTH) {
-                statusPassword = NEW_MEMBER_CREATED;
-                reset_smol_package();
-            }
-            if (isButtonBack()) {
-                statusPassword = ADMIN_MEMBER_MANAGER;
-                reset_smol_package();
-            }
-            if (timeDelay > 300) {      
-                statusPassword = ADMIN_DASHBOARD;
-                reset_package();
+                if (isButtonNext() && indexOfNumber >= PASSWORD_LENGTH) {
+                    statusPassword = NEW_MEMBER_CREATED;
+                    reset_smol_package();
+                }
+                if (isButtonBack()) {
+                    statusPassword = ADMIN_MEMBER_MANAGER;
+                    reset_smol_package();
+                }
+                if (timeDelay > 300) {      
+                    statusPassword = ADMIN_DASHBOARD;
+                    reset_package();
+                }
             }
             break;
         case NEW_MEMBER_CREATED:

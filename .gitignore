@@ -10,3 +10,4 @@ Bai10_KeyMatrix_LCD - Password Door/dist/default/production/Bai10_KeyMatrix_LCD_
 Bai10_KeyMatrix_LCD - Password Door/build/default/production/clock/simu_clock.o.d
 Bai10_KeyMatrix_LCD - Password Door/build/default/production/i2c/i2c.o
 *.o
+*.o
