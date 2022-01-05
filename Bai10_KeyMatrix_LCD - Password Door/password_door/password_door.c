@@ -423,6 +423,10 @@ void App_PasswordDoor()
             if (isButtonBack()) {
                 statusPassword = INIT_SYSTEM;
             }
+            if (doorState == OPENED && timeDelay >= 100) {
+                statusPassword = CLOSING_DOOR;
+                reset_package();
+            }
             if (timeDelay >= 300) {
                 statusPassword = INIT_SYSTEM;
             }
@@ -819,22 +823,27 @@ void App_PasswordDoor()
         case ADMIN_REMOVE_MEMBER:
             //SHOW MEMBER ONLY, DO NOT SHOW ADMIN!
             timeDelay++;
-            if ((ad_cur_mem_list * 4 + 1) < num_of_user) {
-                LcdPrintStringS(0,0,"1. ");
-                LcdPrintNumS(0,3,account[ad_cur_mem_list * 4 + 1].ID);
-            }
-            if ((ad_cur_mem_list * 4 + 2) < num_of_user) {
-                LcdPrintStringS(0,8,"2. ");
-                LcdPrintNumS(0,11,account[ad_cur_mem_list * 4 + 2].ID);
-            }
-            
-            if ((ad_cur_mem_list * 4 + 3) < num_of_user) {
-                LcdPrintStringS(1,0,"3. ");
-                LcdPrintNumS(1,3,account[ad_cur_mem_list * 4 + 3].ID);
-            }
-            if ((ad_cur_mem_list * 4 + 4) < num_of_user) {
-                LcdPrintStringS(1,8,"4. ");
-                LcdPrintNumS(1,11,account[ad_cur_mem_list * 4 + 4].ID);
+            if (num_of_user <= 1) {
+                LcdPrintLineS(0, "EMPTY");
+                LcdPrintLineS(1," ");
+            } else {
+                if ((ad_cur_mem_list * 4 + 1) < num_of_user) {
+                    LcdPrintStringS(0,0,"1. ");
+                    LcdPrintNumS(0,3,account[ad_cur_mem_list * 4 + 1].ID);
+                }
+                if ((ad_cur_mem_list * 4 + 2) < num_of_user) {
+                    LcdPrintStringS(0,8,"2. ");
+                    LcdPrintNumS(0,11,account[ad_cur_mem_list * 4 + 2].ID);
+                }
+
+                if ((ad_cur_mem_list * 4 + 3) < num_of_user) {
+                    LcdPrintStringS(1,0,"3. ");
+                    LcdPrintNumS(1,3,account[ad_cur_mem_list * 4 + 3].ID);
+                }
+                if ((ad_cur_mem_list * 4 + 4) < num_of_user) {
+                    LcdPrintStringS(1,8,"4. ");
+                    LcdPrintNumS(1,11,account[ad_cur_mem_list * 4 + 4].ID);
+                }                 
             }
             
             if (isButtonNext()) {
@@ -925,22 +934,27 @@ void App_PasswordDoor()
             break;
         case ADMIN_CHANGE_MEMBER:
             timeDelay++;
-            if ((ad_cur_mem_list * 4 + 1) < num_of_user) {
-                LcdPrintStringS(0,0,"1. ");
-                LcdPrintNumS(0,3,account[ad_cur_mem_list * 4 + 1].ID);
-            }
-            if ((ad_cur_mem_list * 4 + 2) < num_of_user) {
-                LcdPrintStringS(0,8,"2. ");
-                LcdPrintNumS(0,11,account[ad_cur_mem_list * 4 + 2].ID);
-            }
-            
-            if ((ad_cur_mem_list * 4 + 3) < num_of_user) {
-                LcdPrintStringS(1,0,"3. ");
-                LcdPrintNumS(1,3,account[ad_cur_mem_list * 4 + 3].ID);
-            }
-            if ((ad_cur_mem_list * 4 + 4) < num_of_user) {
-                LcdPrintStringS(1,8,"4. ");
-                LcdPrintNumS(1,11,account[ad_cur_mem_list * 4 + 4].ID);
+            if (num_of_user <= 1) {
+                LcdPrintLineS(0, "EMPTY");
+                LcdPrintLineS(1," ");
+            } else {
+                if ((ad_cur_mem_list * 4 + 1) < num_of_user) {
+                    LcdPrintStringS(0,0,"1. ");
+                    LcdPrintNumS(0,3,account[ad_cur_mem_list * 4 + 1].ID);
+                }
+                if ((ad_cur_mem_list * 4 + 2) < num_of_user) {
+                    LcdPrintStringS(0,8,"2. ");
+                    LcdPrintNumS(0,11,account[ad_cur_mem_list * 4 + 2].ID);
+                }
+
+                if ((ad_cur_mem_list * 4 + 3) < num_of_user) {
+                    LcdPrintStringS(1,0,"3. ");
+                    LcdPrintNumS(1,3,account[ad_cur_mem_list * 4 + 3].ID);
+                }
+                if ((ad_cur_mem_list * 4 + 4) < num_of_user) {
+                    LcdPrintStringS(1,8,"4. ");
+                    LcdPrintNumS(1,11,account[ad_cur_mem_list * 4 + 4].ID);
+                }
             }
             
             if (isButtonNext()) {
