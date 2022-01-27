@@ -57,6 +57,14 @@
 #define LCD_DIR_IN		LCD_PORT |= 0xF0;
 */
 
+//user defined char
+#define LEFT_ARROW          0b00000000      //0x00 (hoac 0x08)  dia chi ki tu trong CGROM
+#define RIGHT_ARROW         0b00000001      //0x01 (hoac 0x09)  dia chi ki tu trong CGROM
+#define CENTER_NODE         0b00000010      //0x02 (hoac 0x0a)  dia chi ki tu trong CGROM
+#define LONG_LEFT_ARROW     0b00000011      //0x02 (hoac 0x0a)  dia chi ki tu trong CGROM
+
+
+
 void lcd_delay(unsigned long time);
 void setInitCGRAM();
 void lcd_init();
@@ -82,5 +90,8 @@ void DisplayLcdScreen2();
 void DisplayLcdScreenOld();
 void LcdPrintNumS(unsigned char x, unsigned char y, long num);
 void LcdPrintStringS(unsigned char x, unsigned char y, const rom  unsigned char* string);
-
+void LcdPrintLineS(unsigned char x, const rom unsigned char *string);
+//dieu nay co nghia la ta co the tao. toi da 8 ki tu custom
+void LcdCreateChar(unsigned char* char_code_arr, unsigned char cgram_address);
+void init_user_defined_char();
 #endif 

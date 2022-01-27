@@ -19,6 +19,7 @@
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
+      <itemPath>18f4620_g_big.lkr</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -42,15 +43,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>button_matrix</Elem>
-    <Elem>timer</Elem>
-    <Elem>interrupt</Elem>
-    <Elem>lcd</Elem>
-    <Elem>i2c</Elem>
-    <Elem>uart</Elem>
-    <Elem>adc</Elem>
-    <Elem>clock</Elem>
-    <Elem>password_door</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -218,7 +211,7 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>
       </PICkit3PlatformTool>
-      <item path="clock/clock.c" ex="true" overriding="false">
+      <item path="clock/clock.c" ex="false" overriding="false">
         <C18>
         </C18>
         <C18-AS>
@@ -228,7 +221,7 @@
         <C18LanguageToolchain>
         </C18LanguageToolchain>
       </item>
-      <item path="clock/clock.h" ex="true" overriding="false">
+      <item path="clock/clock.h" ex="false" overriding="false">
         <C18>
         </C18>
         <C18-AS>
@@ -238,7 +231,7 @@
         <C18LanguageToolchain>
         </C18LanguageToolchain>
       </item>
-      <item path="clock/simu_clock.c" ex="false" overriding="false">
+      <item path="clock/simu_clock.c" ex="true" overriding="false">
         <C18>
         </C18>
         <C18-AS>
@@ -248,7 +241,7 @@
         <C18LanguageToolchain>
         </C18LanguageToolchain>
       </item>
-      <item path="clock/simu_clock.h" ex="false" overriding="false">
+      <item path="clock/simu_clock.h" ex="true" overriding="false">
         <C18>
         </C18>
         <C18-AS>

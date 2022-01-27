@@ -11,7 +11,9 @@
 #include "simulate_machine\simulate_machine.h"
 #include "adc\adc.h"
 #include "pwm\pwm.h"
-
+#include "traffic_light.h"
+#include "spi_stimulate.h"
+#include "display_7seg_spi.h"
 
 
 
@@ -49,5 +51,8 @@
 #pragma config EBTR2	= OFF
 #pragma config EBTR3	= OFF
 #pragma config EBTRB	= OFF
+
+
+
 
 #endif

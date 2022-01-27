@@ -3,6 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/button_matrix/button.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/adc/adc.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/uart/uart.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/traffic_light.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/pwm/pwm.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/adc/adc.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/display_7seg_spi.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/display_7seg_spi.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/traffic_light.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/lcd/lcd.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/main.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/i2c/i2c.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/lcd/lcd.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/spi_stimulate.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/simulate_machine/simulate_machine.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/interrupt/interrupt.c</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/main.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/i2c/i2c.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/button_matrix/button.h</file>
+            <file>file:/D:/GitHub/TKLL/Bai10_TRAFFIC_UART/spi_stimulate.h</file>
+        </group>
     </open-files>
 </project-private>

@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c adc/adc.c i2c/i2c.c uart/uart.c password_door/password_door.c clock/simu_clock.c
+SOURCEFILES_QUOTED_IF_SPACED=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c adc/adc.c i2c/i2c.c uart/uart.c clock/clock.c password_door/password_door.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/password_door/password_door.o ${OBJECTDIR}/clock/simu_clock.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/button_matrix/button.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer/timer.o.d ${OBJECTDIR}/interrupt/interrupt.o.d ${OBJECTDIR}/lcd/lcd.o.d ${OBJECTDIR}/adc/adc.o.d ${OBJECTDIR}/i2c/i2c.o.d ${OBJECTDIR}/uart/uart.o.d ${OBJECTDIR}/password_door/password_door.o.d ${OBJECTDIR}/clock/simu_clock.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/clock/clock.o ${OBJECTDIR}/password_door/password_door.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/button_matrix/button.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer/timer.o.d ${OBJECTDIR}/interrupt/interrupt.o.d ${OBJECTDIR}/lcd/lcd.o.d ${OBJECTDIR}/adc/adc.o.d ${OBJECTDIR}/i2c/i2c.o.d ${OBJECTDIR}/uart/uart.o.d ${OBJECTDIR}/clock/clock.o.d ${OBJECTDIR}/password_door/password_door.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/password_door/password_door.o ${OBJECTDIR}/clock/simu_clock.o
+OBJECTFILES=${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/clock/clock.o ${OBJECTDIR}/password_door/password_door.o
 
 # Source Files
-SOURCEFILES=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c adc/adc.c i2c/i2c.c uart/uart.c password_door/password_door.c clock/simu_clock.c
+SOURCEFILES=button_matrix/button.c main.c timer/timer.c interrupt/interrupt.c lcd/lcd.c adc/adc.c i2c/i2c.c uart/uart.c clock/clock.c password_door/password_door.c
 
 
 CFLAGS=
@@ -153,6 +153,14 @@ ${OBJECTDIR}/uart/uart.o: uart/uart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${DEP_GEN} -d ${OBJECTDIR}/uart/uart.o 
 	@${FIXDEPS} "${OBJECTDIR}/uart/uart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
+${OBJECTDIR}/clock/clock.o: clock/clock.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/clock" 
+	@${RM} ${OBJECTDIR}/clock/clock.o.d 
+	@${RM} ${OBJECTDIR}/clock/clock.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/clock/clock.o   clock/clock.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/clock/clock.o 
+	@${FIXDEPS} "${OBJECTDIR}/clock/clock.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
 ${OBJECTDIR}/password_door/password_door.o: password_door/password_door.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/password_door" 
 	@${RM} ${OBJECTDIR}/password_door/password_door.o.d 
@@ -160,14 +168,6 @@ ${OBJECTDIR}/password_door/password_door.o: password_door/password_door.c  nbpro
 	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/password_door/password_door.o   password_door/password_door.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/password_door/password_door.o 
 	@${FIXDEPS} "${OBJECTDIR}/password_door/password_door.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/clock/simu_clock.o: clock/simu_clock.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/clock" 
-	@${RM} ${OBJECTDIR}/clock/simu_clock.o.d 
-	@${RM} ${OBJECTDIR}/clock/simu_clock.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/clock/simu_clock.o   clock/simu_clock.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/clock/simu_clock.o 
-	@${FIXDEPS} "${OBJECTDIR}/clock/simu_clock.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 else
 ${OBJECTDIR}/button_matrix/button.o: button_matrix/button.c  nbproject/Makefile-${CND_CONF}.mk
@@ -234,6 +234,14 @@ ${OBJECTDIR}/uart/uart.o: uart/uart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${DEP_GEN} -d ${OBJECTDIR}/uart/uart.o 
 	@${FIXDEPS} "${OBJECTDIR}/uart/uart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
+${OBJECTDIR}/clock/clock.o: clock/clock.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/clock" 
+	@${RM} ${OBJECTDIR}/clock/clock.o.d 
+	@${RM} ${OBJECTDIR}/clock/clock.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/clock/clock.o   clock/clock.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/clock/clock.o 
+	@${FIXDEPS} "${OBJECTDIR}/clock/clock.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
 ${OBJECTDIR}/password_door/password_door.o: password_door/password_door.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/password_door" 
 	@${RM} ${OBJECTDIR}/password_door/password_door.o.d 
@@ -242,26 +250,18 @@ ${OBJECTDIR}/password_door/password_door.o: password_door/password_door.c  nbpro
 	@${DEP_GEN} -d ${OBJECTDIR}/password_door/password_door.o 
 	@${FIXDEPS} "${OBJECTDIR}/password_door/password_door.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/clock/simu_clock.o: clock/simu_clock.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/clock" 
-	@${RM} ${OBJECTDIR}/clock/simu_clock.o.d 
-	@${RM} ${OBJECTDIR}/clock/simu_clock.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/clock/simu_clock.o   clock/simu_clock.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/clock/simu_clock.o 
-	@${FIXDEPS} "${OBJECTDIR}/clock/simu_clock.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    18f4620_g_big.lkr
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_LD} $(MP_EXTRA_LD_PRE)   -p$(MP_PROCESSOR_OPTION_LD)  -w -x -u_DEBUG -m"${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"  -z__MPLAB_BUILD=1  -u_CRUNTIME -z__MPLAB_DEBUG=1 -z__MPLAB_DEBUGGER_PICKIT2=1 $(MP_LINKER_DEBUG_OPTION) -l ${MP_CC_DIR}\\..\\lib  -o dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}   
+	${MP_LD} $(MP_EXTRA_LD_PRE) "18f4620_g_big.lkr"  -p$(MP_PROCESSOR_OPTION_LD)  -w -x -u_DEBUG -m"${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"  -z__MPLAB_BUILD=1  -u_CRUNTIME -z__MPLAB_DEBUG=1 -z__MPLAB_DEBUGGER_PICKIT2=1 $(MP_LINKER_DEBUG_OPTION) -l ${MP_CC_DIR}\\..\\lib  -o dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}   
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   18f4620_g_big.lkr
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_LD} $(MP_EXTRA_LD_PRE)   -p$(MP_PROCESSOR_OPTION_LD)  -w  -m"${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"  -z__MPLAB_BUILD=1  -u_CRUNTIME -l ${MP_CC_DIR}\\..\\lib  -o dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}   
+	${MP_LD} $(MP_EXTRA_LD_PRE) "18f4620_g_big.lkr"  -p$(MP_PROCESSOR_OPTION_LD)  -w  -m"${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"  -z__MPLAB_BUILD=1  -u_CRUNTIME -l ${MP_CC_DIR}\\..\\lib  -o dist/${CND_CONF}/${IMAGE_TYPE}/Bai10_KeyMatrix_LCD_-_Password_Door.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}   
 endif
 
 

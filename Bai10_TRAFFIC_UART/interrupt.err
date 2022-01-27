@@ -1,4 +1,4 @@
-Warning[2058] D:\Hoc_tap_PC\VDK\VDK-Full\Bai10_TRAFFIC_UART\interrupt\interrupt.c 72 : call of function without prototype
-Warning[2058] D:\Hoc_tap_PC\VDK\VDK-Full\Bai10_TRAFFIC_UART\interrupt\interrupt.c 84 : call of function without prototype
-Warning[2058] D:\Hoc_tap_PC\VDK\VDK-Full\Bai10_TRAFFIC_UART\interrupt\interrupt.c 121 : call of function without prototype
-Warning[2058] D:\Hoc_tap_PC\VDK\VDK-Full\Bai10_TRAFFIC_UART\interrupt\interrupt.c 133 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\interrupt\interrupt.c 72 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\interrupt\interrupt.c 84 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\interrupt\interrupt.c 121 : call of function without prototype
+Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\interrupt\interrupt.c 133 : call of function without prototype

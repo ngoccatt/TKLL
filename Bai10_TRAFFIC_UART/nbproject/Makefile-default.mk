@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=uart/uart.c main.c button_matrix/button.c interrupt/interrupt.c timer/timer.c lcd/lcd.c i2c/i2c.c adc/adc.c pwm/pwm.c simulate_machine/simulate_machine.c
+SOURCEFILES_QUOTED_IF_SPACED=uart/uart.c main.c button_matrix/button.c interrupt/interrupt.c timer/timer.c lcd/lcd.c i2c/i2c.c adc/adc.c pwm/pwm.c simulate_machine/simulate_machine.c traffic_light.c spi_stimulate.c display_7seg_spi.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/main.o ${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/pwm/pwm.o ${OBJECTDIR}/simulate_machine/simulate_machine.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/uart/uart.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/button_matrix/button.o.d ${OBJECTDIR}/interrupt/interrupt.o.d ${OBJECTDIR}/timer/timer.o.d ${OBJECTDIR}/lcd/lcd.o.d ${OBJECTDIR}/i2c/i2c.o.d ${OBJECTDIR}/adc/adc.o.d ${OBJECTDIR}/pwm/pwm.o.d ${OBJECTDIR}/simulate_machine/simulate_machine.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/main.o ${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/pwm/pwm.o ${OBJECTDIR}/simulate_machine/simulate_machine.o ${OBJECTDIR}/traffic_light.o ${OBJECTDIR}/spi_stimulate.o ${OBJECTDIR}/display_7seg_spi.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/uart/uart.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/button_matrix/button.o.d ${OBJECTDIR}/interrupt/interrupt.o.d ${OBJECTDIR}/timer/timer.o.d ${OBJECTDIR}/lcd/lcd.o.d ${OBJECTDIR}/i2c/i2c.o.d ${OBJECTDIR}/adc/adc.o.d ${OBJECTDIR}/pwm/pwm.o.d ${OBJECTDIR}/simulate_machine/simulate_machine.o.d ${OBJECTDIR}/traffic_light.o.d ${OBJECTDIR}/spi_stimulate.o.d ${OBJECTDIR}/display_7seg_spi.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/main.o ${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/pwm/pwm.o ${OBJECTDIR}/simulate_machine/simulate_machine.o
+OBJECTFILES=${OBJECTDIR}/uart/uart.o ${OBJECTDIR}/main.o ${OBJECTDIR}/button_matrix/button.o ${OBJECTDIR}/interrupt/interrupt.o ${OBJECTDIR}/timer/timer.o ${OBJECTDIR}/lcd/lcd.o ${OBJECTDIR}/i2c/i2c.o ${OBJECTDIR}/adc/adc.o ${OBJECTDIR}/pwm/pwm.o ${OBJECTDIR}/simulate_machine/simulate_machine.o ${OBJECTDIR}/traffic_light.o ${OBJECTDIR}/spi_stimulate.o ${OBJECTDIR}/display_7seg_spi.o
 
 # Source Files
-SOURCEFILES=uart/uart.c main.c button_matrix/button.c interrupt/interrupt.c timer/timer.c lcd/lcd.c i2c/i2c.c adc/adc.c pwm/pwm.c simulate_machine/simulate_machine.c
+SOURCEFILES=uart/uart.c main.c button_matrix/button.c interrupt/interrupt.c timer/timer.c lcd/lcd.c i2c/i2c.c adc/adc.c pwm/pwm.c simulate_machine/simulate_machine.c traffic_light.c spi_stimulate.c display_7seg_spi.c
 
 
 CFLAGS=
@@ -169,6 +169,30 @@ ${OBJECTDIR}/simulate_machine/simulate_machine.o: simulate_machine/simulate_mach
 	@${DEP_GEN} -d ${OBJECTDIR}/simulate_machine/simulate_machine.o 
 	@${FIXDEPS} "${OBJECTDIR}/simulate_machine/simulate_machine.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
+${OBJECTDIR}/traffic_light.o: traffic_light.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/traffic_light.o.d 
+	@${RM} ${OBJECTDIR}/traffic_light.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/traffic_light.o   traffic_light.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/traffic_light.o 
+	@${FIXDEPS} "${OBJECTDIR}/traffic_light.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/spi_stimulate.o: spi_stimulate.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/spi_stimulate.o.d 
+	@${RM} ${OBJECTDIR}/spi_stimulate.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/spi_stimulate.o   spi_stimulate.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/spi_stimulate.o 
+	@${FIXDEPS} "${OBJECTDIR}/spi_stimulate.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/display_7seg_spi.o: display_7seg_spi.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/display_7seg_spi.o.d 
+	@${RM} ${OBJECTDIR}/display_7seg_spi.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/display_7seg_spi.o   display_7seg_spi.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/display_7seg_spi.o 
+	@${FIXDEPS} "${OBJECTDIR}/display_7seg_spi.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
 else
 ${OBJECTDIR}/uart/uart.o: uart/uart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/uart" 
@@ -249,6 +273,30 @@ ${OBJECTDIR}/simulate_machine/simulate_machine.o: simulate_machine/simulate_mach
 	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/simulate_machine/simulate_machine.o   simulate_machine/simulate_machine.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/simulate_machine/simulate_machine.o 
 	@${FIXDEPS} "${OBJECTDIR}/simulate_machine/simulate_machine.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/traffic_light.o: traffic_light.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/traffic_light.o.d 
+	@${RM} ${OBJECTDIR}/traffic_light.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/traffic_light.o   traffic_light.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/traffic_light.o 
+	@${FIXDEPS} "${OBJECTDIR}/traffic_light.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/spi_stimulate.o: spi_stimulate.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/spi_stimulate.o.d 
+	@${RM} ${OBJECTDIR}/spi_stimulate.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/spi_stimulate.o   spi_stimulate.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/spi_stimulate.o 
+	@${FIXDEPS} "${OBJECTDIR}/spi_stimulate.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/display_7seg_spi.o: display_7seg_spi.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/display_7seg_spi.o.d 
+	@${RM} ${OBJECTDIR}/display_7seg_spi.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/display_7seg_spi.o   display_7seg_spi.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/display_7seg_spi.o 
+	@${FIXDEPS} "${OBJECTDIR}/display_7seg_spi.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 endif
 

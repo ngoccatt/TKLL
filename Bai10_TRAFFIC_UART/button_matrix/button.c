@@ -8,13 +8,14 @@ unsigned char arrayMaskInputOfKey [4] = {0x1,0x02,0x04,0x08};
 
 void init_key_matrix()
 {
-	TRIS_BUTTON = 0x0f; 
+	TRIS_BUTTON = 0x0f;         // tris = 0 -> chan mcu gui output, tris = 1 -> chan mcu doc input
 	PORT_BUTTON = 0xff;
 }
 void init_key_matrix_with_uart_i2c()
 {
         TRIS_BUTTON = TRIS_BUTTON | 0x07;
         TRIS_BUTTON = TRIS_BUTTON & 0b11011111; //RC5 Output
+//    TRIS_BUTTON = TRIS_BUTTON & 0xcf; //RC5 & RC4 Output
 	PORT_BUTTON = 0xff;
 }
 void scan_key_matrix()

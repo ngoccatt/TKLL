@@ -12,6 +12,9 @@
       <itemPath>pwm/pwm.h</itemPath>
       <itemPath>simulate_machine/simulate_machine.h</itemPath>
       <itemPath>lcd/lcd.h</itemPath>
+      <itemPath>traffic_light.h</itemPath>
+      <itemPath>spi_stimulate.h</itemPath>
+      <itemPath>display_7seg_spi.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -30,6 +33,9 @@
       <itemPath>adc/adc.c</itemPath>
       <itemPath>pwm/pwm.c</itemPath>
       <itemPath>simulate_machine/simulate_machine.c</itemPath>
+      <itemPath>traffic_light.c</itemPath>
+      <itemPath>spi_stimulate.c</itemPath>
+      <itemPath>display_7seg_spi.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
