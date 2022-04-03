@@ -457,7 +457,6 @@ void LcdCreateChar(unsigned char* char_code_arr, unsigned char cgram_address) {
     //                                        setting the address multiple time cause problem.
     for(i = 0; i < 8; i++) {
         lcd_write_data(char_code_arr[i]);       //write data into CGRAM address
-        cmd = cmd + 1;
     }
 }
 

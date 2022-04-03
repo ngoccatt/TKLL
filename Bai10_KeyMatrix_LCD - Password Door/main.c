@@ -60,11 +60,11 @@ void init_system(void)
         LED = 0x00;
         init_interrupt();
         delay_ms(1000);
-        init_timer0(4695);//dinh thoi 1ms sai so 1%
-        init_timer1(9390);//dinh thoi 2ms
+//        init_timer0(4695);//dinh thoi 1ms sai so 1%
+//        init_timer1(9390);//dinh thoi 2ms
         init_timer3(46950);//dinh thoi 10ms
-        SetTimer0_ms(2);
-        SetTimer1_ms(10);
+//        SetTimer0_ms(2);
+//        SetTimer1_ms(10);
         SetTimer3_ms(50); //Chu ky thuc hien viec xu ly input,proccess,output
         init_key_matrix();
 //        disable_uart();

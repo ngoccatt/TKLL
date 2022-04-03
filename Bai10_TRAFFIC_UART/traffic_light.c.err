@@ -1,8 +1,0 @@
-Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 53 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 55 : call of function without prototype
-Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 163 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 166 : suspicious pointer conversion
-Warning[2058] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 172 : call of function without prototype
-Warning[2054] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 179 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 193 : suspicious pointer conversion
-Warning[2054] D:\GitHub\TKLL\Bai10_TRAFFIC_UART\traffic_light.c.c 206 : suspicious pointer conversion
